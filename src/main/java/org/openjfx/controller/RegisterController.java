@@ -1,0 +1,46 @@
+package org.openjfx.controller;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import org.openjfx.App;
+
+import java.io.IOException;
+
+public class RegisterController {
+
+    @FXML
+    private TextField firstNameTextField;
+
+    @FXML
+    private TextField lastNameTextField;
+
+    @FXML
+    private TextField userNameTextField;
+
+    @FXML
+    private TextField confirmPasswordTextField;
+
+    @FXML
+    private Button registerButton;
+
+    @FXML
+    private Button backToLoginButton;
+
+    @FXML
+    private PasswordField passwordTextField;
+
+    @FXML
+    void backToLoginButtonOnMouseClicked(MouseEvent event) throws IOException {
+        App.setRoot("login");
+    }
+
+    @FXML
+    void registerButtonOnMouseClicked(MouseEvent event) {
+
+    }
+
+}
+

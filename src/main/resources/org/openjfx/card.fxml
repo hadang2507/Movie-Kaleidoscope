@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="130.0" prefWidth="382.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller.CardController">
+   <children>
+      <ImageView fx:id="imageViewMovie" fitHeight="130.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true" />
+      <VBox layoutX="162.0" prefHeight="130.0" prefWidth="221.0">
+         <children>
+            <Label fx:id="nameMovieLabel" prefHeight="30.0" prefWidth="258.0" text="Name of the Movie" />
+            <Label fx:id="detailLabel" prefHeight="40.0" prefWidth="222.0" text="Detail" />
+            <Label fx:id="descriptionLabel" prefHeight="50.0" prefWidth="222.0" text="Description" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

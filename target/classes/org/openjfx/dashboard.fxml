@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="581.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller.DashboardController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #032541;">
+         <children>
+            <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../OneDrive/Desktop/132877542_697285407644547_7122502184623410210_n.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#usernameOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Username" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="recommendedMoviesLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#recommendedMoviesOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Recommended Movies" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="topRatedLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#topRatedOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Top Rated" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="wishListLabel" alignment="CENTER" onMouseClicked="#wishListOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Wish List" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="ratedMoviesLabel" alignment="CENTER" onMouseClicked="#ratedMoviesOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Rated Movies" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="searchLabel" alignment="CENTER" onMouseClicked="#searchOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Search" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="profileSettingLabel" alignment="CENTER" onMouseClicked="#profileSettingOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Profile Setting" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label text="Label" />
+         </children>
+      </VBox>
+      <Label fx:id="headingLabel" alignment="CENTER" layoutX="200.0" prefHeight="42.0" prefWidth="382.0" style="-fx-background-color: #87CCA5;" text="Label" textFill="#032541">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="200.0" layoutY="66.0" prefHeight="330.0" prefWidth="382.0" />
+   </children>
+</AnchorPane>
