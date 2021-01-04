@@ -7,37 +7,37 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="330.0" prefWidth="382.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller.ProfileController">
+<AnchorPane prefHeight="330.0" prefWidth="382.0" style="-fx-background-color: #032541;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller.ProfileController">
    <children>
-      <VBox layoutX="62.0" prefHeight="238.0" prefWidth="320.0">
+      <VBox layoutX="62.0" layoutY="35.0" prefHeight="238.0" prefWidth="320.0">
          <children>
             <HBox prefHeight="50.0" prefWidth="320.0">
                <children>
-                  <Label prefHeight="30.0" prefWidth="80.0" text="Username" />
+                  <Label prefHeight="30.0" prefWidth="80.0" text="Username" textFill="WHITE" />
                   <TextField fx:id="usernameTextField" prefHeight="30.0" prefWidth="149.0" />
                </children>
             </HBox>
             <HBox prefHeight="50.0" prefWidth="320.0">
                <children>
-                  <Label prefHeight="30.0" prefWidth="80.0" text="Password" />
+                  <Label prefHeight="30.0" prefWidth="80.0" text="Password" textFill="WHITE" />
                   <TextField fx:id="passwordTextField" prefHeight="30.0" prefWidth="149.0" />
                </children>
             </HBox>
             <HBox prefHeight="50.0" prefWidth="320.0">
                <children>
-                  <Label prefHeight="30.0" prefWidth="80.0" text="First Name" />
+                  <Label prefHeight="30.0" prefWidth="80.0" text="First Name" textFill="WHITE" />
                   <TextField fx:id="firstNameTextField" prefHeight="30.0" prefWidth="149.0" />
                </children>
             </HBox>
             <HBox prefHeight="50.0" prefWidth="320.0">
                <children>
-                  <Label prefHeight="30.0" prefWidth="80.0" text="Last Name" />
+                  <Label prefHeight="30.0" prefWidth="80.0" text="Last Name" textFill="WHITE" />
                   <TextField fx:id="lastNameTextField" prefHeight="30.0" prefWidth="149.0" />
                </children>
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="saveChangesButton" layoutX="120.0" layoutY="220.0" mnemonicParsing="false" onAction="#saveChangesOnAction" prefHeight="36.0" prefWidth="142.0" text="Save Changes" />
+      <Button fx:id="saveChangesButton" layoutX="32.0" layoutY="258.0" mnemonicParsing="false" onAction="#saveChangesOnAction" prefHeight="36.0" prefWidth="142.0" style="-fx-background-color: #08B4E1;" text="Save Changes" textFill="WHITE" />
+      <Button fx:id="backToDashboardButton" layoutX="212.0" layoutY="258.0" mnemonicParsing="false" onAction="#backToDashboardButtonOnAction" prefHeight="36.0" prefWidth="142.0" style="-fx-background-color: #08B4E1;" text="Back to Dashboard" textFill="WHITE" />
    </children>
 </AnchorPane>

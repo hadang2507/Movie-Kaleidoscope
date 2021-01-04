@@ -12,6 +12,7 @@ import java.io.IOException;
  */
 public class App extends Application {
 
+
     private static Scene scene;
     private static Stage stage;
 
@@ -19,8 +20,7 @@ public class App extends Application {
     public void start(Stage stageInitial) throws IOException {
         stage = stageInitial;
 //        scene = new Scene(loadFXML("login"));
-//        scene = new Scene(loadFXML("dashboard"));\
-        scene = new Scene(loadFXML("movie-profile"));
+        scene = new Scene(loadFXML("dashboard"));
         stage.setScene(scene);
         stage.show();
     }

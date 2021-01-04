@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,50 +17,78 @@
                <image>
                   <Image url="@../../../../../../../../../OneDrive/Desktop/132877542_697285407644547_7122502184623410210_n.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#usernameOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Username" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
             <Label fx:id="recommendedMoviesLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#recommendedMoviesOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Recommended Movies" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
             <Label fx:id="topRatedLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#topRatedOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Top Rated" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
             <Label fx:id="wishListLabel" alignment="CENTER" onMouseClicked="#wishListOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Wish List" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
             <Label fx:id="ratedMoviesLabel" alignment="CENTER" onMouseClicked="#ratedMoviesOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Rated Movies" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
             <Label fx:id="searchLabel" alignment="CENTER" onMouseClicked="#searchOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Search" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
             <Label fx:id="profileSettingLabel" alignment="CENTER" onMouseClicked="#profileSettingOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Profile Setting" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
             <Label text="Label" />
          </children>
       </VBox>
-      <Label fx:id="headingLabel" alignment="CENTER" layoutX="200.0" prefHeight="42.0" prefWidth="382.0" style="-fx-background-color: #87CCA5;" text="Label" textFill="#032541">
+      <Label fx:id="headingLabel" alignment="CENTER" layoutX="200.0" prefHeight="42.0" prefWidth="382.0" style="-fx-background-color: #87CCA5;" text="Label" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="200.0" layoutY="66.0" prefHeight="330.0" prefWidth="382.0" />
+      <ScrollPane layoutX="200.0" layoutY="69.0" prefHeight="330.0" prefWidth="381.0">
+         <content>
+            <VBox fx:id="cardsVbox" prefHeight="331.0" prefWidth="381.0" />
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

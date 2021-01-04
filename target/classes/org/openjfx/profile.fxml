@@ -7,10 +7,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane prefHeight="330.0" prefWidth="382.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller.ProfileController">
    <children>
-      <VBox layoutX="62.0" prefHeight="238.0" prefWidth="320.0">
+      <VBox layoutX="62.0" layoutY="35.0" prefHeight="238.0" prefWidth="320.0">
          <children>
             <HBox prefHeight="50.0" prefWidth="320.0">
                <children>
@@ -38,6 +37,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="saveChangesButton" layoutX="120.0" layoutY="220.0" mnemonicParsing="false" onAction="#saveChangesOnAction" prefHeight="36.0" prefWidth="142.0" text="Save Changes" />
+      <Button fx:id="saveChangesButton" layoutX="32.0" layoutY="258.0" mnemonicParsing="false" onAction="#saveChangesOnAction" prefHeight="36.0" prefWidth="142.0" text="Save Changes" />
+      <Button fx:id="backToDashboardButton" layoutX="212.0" layoutY="258.0" mnemonicParsing="false" onAction="#backToDashboardButtonOnAction" prefHeight="36.0" prefWidth="142.0" text="Back to Dashboard" />
    </children>
 </AnchorPane>
