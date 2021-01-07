@@ -12,10 +12,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InitializeController {
 
-    private HashMap<String, String> genres;
+    private List<Genre> genres;
     private List<String> userChoices;
 
     @FXML
@@ -87,63 +88,63 @@ public class InitializeController {
         // api = https://api.themoviedb.org/3/genre/movie/list?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US
         APIRequest apiRequest = new APIRequest();
 
-        List<Genre> genreAndIDs = apiRequest.getGenreAndId();
-        System.out.println(genreAndIDs);
+        this.genres = apiRequest.getGenreAndId();
+        System.out.println(this.genres);
         this.youChooseLabel.setText("You choose: None");
     }
 
     @FXML
     void actionButtonOnAction(ActionEvent event) {
         this.userChoices.add(this.actionButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void adventureButtonOnAction(ActionEvent event) {
         this.addGenre(this.adventureButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void animationButtonOnAction(ActionEvent event) {
         this.addGenre(this.animationButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void comedyButtonOnAction(ActionEvent event) {
         this.addGenre(this.comedyButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void crimeButtonOnAction(ActionEvent event) {
         this.addGenre(this.crimeButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void documentaryButtonOnAction(ActionEvent event) {
         this.addGenre(this.documentaryButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void dramaButtonOnAction(ActionEvent event) {
         this.addGenre(this.dramaButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void familyButtonOnAction(ActionEvent event) {
         this.addGenre(this.familyButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void fantasyButtonOnAction(ActionEvent event) {
         this.addGenre(this.fantasyButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
@@ -152,7 +153,8 @@ public class InitializeController {
 
         // call function that make query
         // TODO
-
+        DatabaseController dbController = new DatabaseController();
+        dbController.insertGenreIDToTableUSERS_GENRE(this.genres);
 
         // move to dashboard
         App.setRoot("dashboard");
@@ -161,61 +163,61 @@ public class InitializeController {
     @FXML
     void historyButtonOnAction(ActionEvent event) {
         this.addGenre(this.historyButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void horrorButtonOnAction(ActionEvent event) {
         this.addGenre(this.horrorButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void musicButtonOnAction(ActionEvent event) {
         this.addGenre(this.musicButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void mysteryButtonOnAction(ActionEvent event) {
         this.addGenre(this.mysteryButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void romanceButtonOnAction(ActionEvent event) {
         this.addGenre(this.romanceButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void scienceFictionButtonOnAction(ActionEvent event) {
         this.addGenre(this.scienceFictionButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void thrillerButtonOnAction(ActionEvent event) {
         this.addGenre(this.thrillerButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void tvMovieButtonOnAction(ActionEvent event) {
         this.addGenre(this.tvMovieButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void warButtonOnAction(ActionEvent event) {
         this.addGenre(this.warButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
     @FXML
     void westernButtonOnAction(ActionEvent event) {
         this.addGenre(this.westernButton.getText());
-        this.returnChoices();
+        this.returnChosenChoices();
     }
 
 
@@ -229,11 +231,30 @@ public class InitializeController {
         this.userChoices.add(genre);
     }
 
-    private void returnChoices() {
+    private void returnChosenChoices() {
         String choices = "";
         for (String each: this.userChoices) {
             choices += each + " - ";
         }
         this.youChooseLabel.setText("You choose: " + choices);
+    }
+
+    private List<Genre> returnChosenGenres(List<String> choices) {
+        List<Genre> results = new ArrayList<>();
+
+        for (String each: this.userChoices) {
+
+            results.add(new Genre(this.getGenreId(each), each));
+        }
+        return results;
+    }
+
+    private String getGenreId(String genre) {
+        for (Genre each: this.genres) {
+            if (each.getName().equals(genre)) {
+                return each.getId();
+            }
+        }
+        return "";
     }
 }
