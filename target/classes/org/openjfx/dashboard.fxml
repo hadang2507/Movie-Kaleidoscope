@@ -17,9 +17,6 @@
                <image>
                   <Image url="@../../../../../../../../../OneDrive/Desktop/132877542_697285407644547_7122502184623410210_n.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
             <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#usernameOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Username" textFill="WHITE">
                <font>

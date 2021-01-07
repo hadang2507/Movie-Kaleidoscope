@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class APIRequest {
 
     // get Json String from URL
-    public String getJsonFromURL(String urlStringFormat) throws IOException, JsonParseException {
+    private String getJsonFromURL(String urlStringFormat) throws IOException, JsonParseException {
         URL url = new URL(urlStringFormat);
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -29,7 +29,7 @@ public class APIRequest {
         return this.returnStringFromJson(url);
     }
 
-    public String returnStringFromJson (URL url) throws IOException{
+    private String returnStringFromJson (URL url) throws IOException{
         String value = "";
         Scanner scan = new Scanner(url.openStream());
 
@@ -40,7 +40,7 @@ public class APIRequest {
         return value;
     }
 
-    public boolean responseStatusTrueOrFalse(int respondCode) {
+    private boolean responseStatusTrueOrFalse(int respondCode) {
         return respondCode >= 200;
     }
 
@@ -59,7 +59,7 @@ public class APIRequest {
 
             Type genreListType = new TypeToken<ArrayList<Genre>>(){}.getType();
             List<Genre> genresList = g.fromJson(genres, genreListType);
-            System.out.println(genresList);
+
             return genresList;
 
         } catch (IOException e) {
