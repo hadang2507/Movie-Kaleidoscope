@@ -3,8 +3,15 @@ package org.openjfx.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import org.openjfx.management.APIRequest;
+import org.openjfx.model.Genre;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class InitializeController {
+
+    private HashMap<String, String> genres;
 
     @FXML
     private Button actionButton;
@@ -65,6 +72,16 @@ public class InitializeController {
 
     @FXML
     private Button finishButton;
+
+    public void initialize() {
+        // api = https://api.themoviedb.org/3/genre/movie/list?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US
+        APIRequest apiRequest = new APIRequest();
+
+        List<Genre> genreAndIDs = apiRequest.getGenreAndId();
+
+
+
+    }
 
     @FXML
     void actionButtonOnAction(ActionEvent event) {

@@ -11,7 +11,7 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
-
+    public String username = null;
 
     private static Scene scene;
     private static Stage stage;
