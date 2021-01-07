@@ -47,6 +47,12 @@ public class DatabaseController {
 
     }
 
+    public boolean checkIfExistAccount(User user) {
+
+        Connection conn = connect();
+        return false;
+    }
+
     public void insertUserToTableUSERS(User user) {
         // TODO
     }
