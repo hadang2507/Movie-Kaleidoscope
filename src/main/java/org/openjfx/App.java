@@ -11,6 +11,7 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
+    public static String username = null;
 
     private static Scene scene;
     private static Stage stage;
@@ -18,9 +19,8 @@ public class App extends Application {
     @Override
     public void start(Stage stageInitial) throws IOException {
         stage = stageInitial;
-//        scene = new Scene(loadFXML("login"));
-//        scene = new Scene(loadFXML("dashboard"));\
-        scene = new Scene(loadFXML("movie-profile"));
+        scene = new Scene(loadFXML("login"));
+//        scene = new Scene(loadFXML("initialization"));
         stage.setScene(scene);
         stage.show();
     }

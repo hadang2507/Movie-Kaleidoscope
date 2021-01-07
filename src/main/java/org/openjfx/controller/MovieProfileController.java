@@ -6,6 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import org.openjfx.App;
+
+import java.io.IOException;
 
 public class MovieProfileController {
     @FXML
@@ -50,8 +53,8 @@ public class MovieProfileController {
     }
 
     @FXML
-    void backToHomeOnAction(ActionEvent event) {
-        System.out.println("hihi");
+    void backToHomeOnAction(ActionEvent event) throws IOException {
+        App.setRoot("dashboard");
     }
 
     @FXML
