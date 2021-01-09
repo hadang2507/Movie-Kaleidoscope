@@ -2,12 +2,10 @@ package org.openjfx.controller;
 
 import org.openjfx.App;
 import org.openjfx.model.Genre;
+import org.openjfx.model.Movie;
 import org.openjfx.model.User;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class DatabaseController {
@@ -37,23 +35,37 @@ public class DatabaseController {
                 pstmt.setString(1, App.username);
                 pstmt.setString(2, each.getName());
                 pstmt.setString(3, each.getId());
+                pstmt.executeUpdate();
             } catch (SQLException e) {
                 System.out.println("error: " + e.getMessage());
                 e.printStackTrace();
             }
         }
-
-
-
     }
 
     public boolean checkIfExistAccount(User user) {
 
-        Connection conn = connect();
+        Connection conn = this.connect();
         return false;
     }
 
     public void insertUserToTableUSERS(User user) {
         // TODO
+    }
+
+    public User getUserInfoFromTableUSERS(String username){
+        String query = "SELECT * FROM USERS where username = ?";
+        Connection conn = this.connect();
+        User user = null;
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, username);
+            ResultSet results = pstmt.executeQuery();
+            user = new User(results.getString("username"), results.getString("password"), results.getString("firstname"), results.getString("lastname"));
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("error: " + e.getMessage());
+        }
+        return user;
     }
 }

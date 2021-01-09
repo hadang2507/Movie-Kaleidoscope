@@ -49,7 +49,7 @@ public class RegisterController {
         // 6. redirect to login page App.setRoot("login");
         String username = this.userNameTextField.getText();
         String pass = this.passwordTextField.getText();
-        User user = new User();
+//        User user = new User();
     }
 
 
