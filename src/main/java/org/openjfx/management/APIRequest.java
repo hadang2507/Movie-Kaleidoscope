@@ -3,6 +3,7 @@ package org.openjfx.management;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import org.openjfx.model.Genre;
+import org.openjfx.model.Movie;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -67,6 +68,12 @@ public class APIRequest {
         }
 
         return null;
+    }
+
+    public List<Movie> getMoviesFromSearch(String search) {
+        List<Movie> movies = new ArrayList<>();
+
+        return movies;
     }
 
 }

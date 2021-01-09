@@ -3,6 +3,7 @@ package org.openjfx.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import org.openjfx.App;
 
 import java.io.IOException;
@@ -11,6 +12,9 @@ public class SearchController {
 
     @FXML
     private Button searchButton;
+
+    @FXML
+    private TextField searchTextField;
 
     @FXML
     private Button nextButton;
@@ -38,6 +42,9 @@ public class SearchController {
 
     @FXML
     void searchButtonOnAction(ActionEvent event) {
+        String search = this.searchTextField.getText();
+
+        DatabaseController dbController = new DatabaseController();
 
     }
 
