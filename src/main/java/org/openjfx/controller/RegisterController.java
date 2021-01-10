@@ -76,7 +76,7 @@ public class RegisterController {
 
         User user = new User(username, pass, first_name, last_name);
         DatabaseController dbController = new DatabaseController();
-        if (dbController.checkIfExistAccount(user)) {
+        if (dbController.checkIfExistAccountFromTableUSERS(user)) {
             this.registerMessageLabel.setText("This username has already existed");
             this.emptyTextField();
             return;

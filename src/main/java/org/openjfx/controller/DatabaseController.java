@@ -5,8 +5,8 @@ import org.openjfx.model.Genre;
 import org.openjfx.model.Movie;
 import org.openjfx.model.User;
 
-import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseController {
@@ -44,23 +44,6 @@ public class DatabaseController {
         }
     }
 
-    public boolean checkIfExistAccount(User user) {
-        //
-        String query = "SELECT * FROM USERS where username = ?";
-        Connection conn = this.connect();
-        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
-            pstmt.setString(1, user.getUsername());
-            ResultSet results = pstmt.executeQuery();
-            conn.close();
-            if (results.next()) {
-                return true;
-            }
-        } catch (SQLException e) {
-            System.out.println("error: " + e.getMessage());
-        }
-        return false;
-    }
-
     public void insertUserToTableUSERS(User user) {
         //
         String query = "INSERT INTO USERS('username','password','firstname', 'lastname') VALUES(?, ?, ?, ?)";
@@ -75,6 +58,22 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.out.println("error: " + e.getMessage());
         }
+    }
+
+    public boolean checkIfExistAccountFromTableUSERS(User user) {
+        String query = "SELECT * FROM USERS where username = ?";
+        Connection conn = this.connect();
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, user.getUsername());
+            ResultSet results = pstmt.executeQuery();
+            conn.close();
+            if (results.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println("error: " + e.getMessage());
+        }
+        return false;
     }
 
     public User getUserInfoFromTableUSERS(String username){
@@ -93,7 +92,7 @@ public class DatabaseController {
         return user;
     }
 
-    public boolean checkPassword(User user){
+    public boolean getPasswordFromTableUSERS(User user){
         String query = "SELECT password FROM USERS where username = ?";
         Connection conn = this.connect();
         try (PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -108,5 +107,24 @@ public class DatabaseController {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public List<Genre> getChosenGenreIDFromTableUSERS_GENRE(String username) {
+        List<Genre> results = new ArrayList<>();
+
+        String query = "SELECT * FROM USERS_GENRE WHERE username = ?";
+        Connection conn = this.connect();
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, username);
+            ResultSet resultSet = pstmt.executeQuery();
+
+            while (resultSet.next()) {
+                results.add(new Genre(resultSet.getString("genre"), resultSet.getString("id_genre")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return results;
     }
 }

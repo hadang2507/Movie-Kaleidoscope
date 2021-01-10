@@ -47,16 +47,24 @@ public class LoginController {
         // additional: forgot password
         String username = this.usernameTextField.getText();
         String pass = this.passwordTextField.getText();
+
         if (username.equals("") || pass.equals("")){
             this.loginMessage.setText("You forget to fill username/password");
             this.emptyTextField();
             return;
         }
+
         User user = new User(username, pass, " ", " ");
         DatabaseController dbController = new DatabaseController();
-        if (dbController.checkIfExistAccount(user) && dbController.checkPassword(user) ){
+
+        if (dbController.checkIfExistAccountFromTableUSERS(user) && dbController.getPasswordFromTableUSERS(user) ){
             App.username = username;
-            App.setRoot("dashboard");
+
+            if (dbController.getChosenGenreIDFromTableUSERS_GENRE(username).isEmpty()) {
+                App.setRoot("initialization");
+            } else {
+                App.setRoot("dashboard");
+            }
         } else {
             this.loginMessage.setText("Incorrect username or password");
         }
