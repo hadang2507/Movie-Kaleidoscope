@@ -57,19 +57,21 @@ public class RegisterController {
         String username = this.userNameTextField.getText();
         String pass = this.passwordTextField.getText();
         String confirm_pass = this.confirmPasswordTextField.getText();
+
         if (first_name.equals("") || last_name.equals("") || username.equals("") || pass.equals("")){
             System.out.println("You have to fill all the information boxes");
             this.emptyTextField();
             return;
         }
+
         if (!confirm_pass.equals(pass)){
             System.out.println("Do not match with your password");
             this.emptyTextField();
             return;
         }
+
         User user = new User(username, pass, first_name, last_name);
         DatabaseController dbController = new DatabaseController();
-//        dbController.checkIfExistAccount(user);
         if (dbController.checkIfExistAccount(user)) {
             System.out.println("This username has already existed");
             this.emptyTextField();

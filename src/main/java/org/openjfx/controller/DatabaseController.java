@@ -51,7 +51,7 @@ public class DatabaseController {
             pstmt.setString(1, user.getUsername());
             ResultSet results = pstmt.executeQuery();
             conn.close();
-            if (results != null) {
+            if (results.next()) {
                 return true;
             }
         } catch (SQLException e) {
