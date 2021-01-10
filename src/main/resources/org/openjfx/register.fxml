@@ -42,10 +42,10 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="confirmPasswordTextField" layoutX="91.0" layoutY="351.0" prefHeight="25.0" prefWidth="336.0" />
       <Button fx:id="registerButton" layoutX="91.0" layoutY="424.0" mnemonicParsing="false" onMouseClicked="#registerButtonOnMouseClicked" prefHeight="26.0" prefWidth="336.0" style="-fx-background-color: #08B4E1;" text="Resgiter" textFill="WHITE" />
       <Button fx:id="backToLoginButton" layoutX="91.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#backToLoginButtonOnMouseClicked" prefHeight="26.0" prefWidth="336.0" style="-fx-background-color: #08B4E1;" text="Back to Login" textFill="WHITE" />
       <PasswordField fx:id="passwordTextField" layoutX="91.0" layoutY="289.0" prefHeight="25.0" prefWidth="336.0" />
-      <Label alignment="CENTER" layoutX="91.0" layoutY="390.0" prefHeight="18.0" prefWidth="336.0" text="Please do not leave any field empty" textFill="#d40242" />
+      <Label fx:id="registerMessageLabel" alignment="CENTER" layoutX="91.0" layoutY="390.0" prefHeight="18.0" prefWidth="336.0" text="Please do not leave any field empty" textFill="#d40242" />
+      <PasswordField fx:id="confirmPasswordField" layoutX="91.0" layoutY="352.0" prefHeight="25.0" prefWidth="336.0" />
    </children>
 </AnchorPane>

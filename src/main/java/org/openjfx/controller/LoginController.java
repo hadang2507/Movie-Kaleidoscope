@@ -27,8 +27,15 @@ public class LoginController {
     @FXML
     private Label loginMessage;
 
+    @FXML
+    private Button forgetPasswordButton;
+
     public void initialize() {
         this.loginMessage.setText("");
+    }
+
+    @FXML
+    void forgetPasswordButtonOnAction(ActionEvent event) {
 
     }
 
@@ -41,7 +48,7 @@ public class LoginController {
         String username = this.usernameTextField.getText();
         String pass = this.passwordTextField.getText();
         if (username.equals("") || pass.equals("")){
-            System.out.println("You forget to fill username/password");
+            this.loginMessage.setText("You forget to fill username/password");
             this.emptyTextField();
             return;
         }
