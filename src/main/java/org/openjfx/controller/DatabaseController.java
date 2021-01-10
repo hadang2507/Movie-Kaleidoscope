@@ -44,13 +44,36 @@ public class DatabaseController {
     }
 
     public boolean checkIfExistAccount(User user) {
-
+        //
+        String query = "SELECT * FROM USERS where username = ?";
         Connection conn = this.connect();
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, user.getUsername());
+            ResultSet results = pstmt.executeQuery();
+            conn.close();
+            if (results != null) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println("error: " + e.getMessage());
+        }
         return false;
     }
 
     public void insertUserToTableUSERS(User user) {
-        // TODO
+        //
+        String query = "INSERT INTO USERS('username','password','firstname', 'lastname') VALUES(?, ?, ?, ?)";
+        Connection conn = this.connect();
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, user.getUsername());
+            pstmt.setString(2, user.getPassword());
+            pstmt.setString(3, user.getFirstName());
+            pstmt.setString(4, user.getLastName());
+            pstmt.executeUpdate();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("error: " + e.getMessage());
+        }
     }
 
     public User getUserInfoFromTableUSERS(String username){
