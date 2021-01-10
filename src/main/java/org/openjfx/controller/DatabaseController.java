@@ -5,6 +5,7 @@ import org.openjfx.model.Genre;
 import org.openjfx.model.Movie;
 import org.openjfx.model.User;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.List;
 
@@ -90,5 +91,22 @@ public class DatabaseController {
             System.out.println("error: " + e.getMessage());
         }
         return user;
+    }
+
+    public boolean checkPassword(User user){
+        String query = "SELECT password FROM USERS where username = ?";
+        Connection conn = this.connect();
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, user.getUsername());
+            ResultSet results = pstmt.executeQuery();
+            if (user.getPassword().equals(results.getString("password"))) {
+                conn.close();
+                return true;
+            }
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
