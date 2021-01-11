@@ -30,7 +30,7 @@ public class APIRequest {
         return this.returnStringFromJson(url);
     }
 
-    private String returnStringFromJson (URL url) throws IOException{
+    private String returnStringFromJson(URL url) throws IOException {
         String value = "";
         Scanner scan = new Scanner(url.openStream());
 
@@ -46,7 +46,7 @@ public class APIRequest {
     }
 
 
-    public List<Genre> getGenreAndId(){
+    public List<Genre> getGenreAndId() {
         String url = "https://api.themoviedb.org/3/genre/movie/list?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US";
 
         try {
@@ -58,7 +58,8 @@ public class APIRequest {
 
             JsonArray genres = value.getAsJsonArray("genres");
 
-            Type genreListType = new TypeToken<ArrayList<Genre>>(){}.getType();
+            Type genreListType = new TypeToken<ArrayList<Genre>>() {
+            }.getType();
             List<Genre> genresList = g.fromJson(genres, genreListType);
 
             return genresList;
@@ -76,4 +77,31 @@ public class APIRequest {
         return movies;
     }
 
+    public List<Movie> getMoviesFromGenres() {
+        List<Genre> genres = getGenreAndId();
+        String genres_id = "";
+
+        for (Genre each : genres) {
+            genres_id += each.getId() + "%2C";
+        }
+
+        String url = "https://api.themoviedb.org/3/discover/movie?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US&sort_by=popularity.desc&include_video=false&page=1&with_genres=" + genres_id;
+        try {
+            String jsonStringInline = getJsonFromURL(url);
+
+            Gson g = new Gson();
+            JsonElement element = g.fromJson(jsonStringInline, JsonElement.class);
+            JsonObject value = element.getAsJsonObject();
+            JsonArray moviesList = value.getAsJsonArray();
+
+            Type movieListType = new TypeToken<ArrayList<Movie>>() {
+            }.getType();
+            List<Movie> movies = g.fromJson(moviesList, movieListType);
+            return movies;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    return null;
+    }
 }
