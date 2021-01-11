@@ -25,8 +25,6 @@ public class DatabaseController {
 
     public void insertGenreIDToTableUSERS_GENRE(List<Genre> genres) {
         Connection conn = connect();
-        System.out.println(conn);
-
         // TODO
 
         for (Genre each: genres) {

@@ -1,8 +1,10 @@
 package org.openjfx.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -37,16 +39,62 @@ public class DashboardController{
     private Label headingLabel;
 
     @FXML
+    private Label movieLabel1;
+
+    @FXML
+    private Label genreLabel1;
+
+    @FXML
+    private Label voteLabel1;
+
+    @FXML
+    private Button moreButton1;
+
+    @FXML
+    private Label movieLabel2;
+
+    @FXML
+    private Label genreLabel2;
+
+    @FXML
+    private Label voteLabel2;
+
+    @FXML
+    private Button moreButton2;
+
+    @FXML
+    private Label movieLabel3;
+
+    @FXML
+    private Label genreLabel3;
+
+    @FXML
+    private Label voteLabel3;
+
+    @FXML
+    private Button moreButton3;
+
+    @FXML
+    private Label genreLabel4;
+
+    @FXML
+    private Label voteLabel4;
+
+    @FXML
+    private Button moreButton4;
+
+    @FXML
+    private Button nextButton;
+
+    @FXML
+    private Button previousButton;
+
+    @FXML
     private VBox cardsVbox = new VBox();
 
     @FXML
     public void initialize() throws IOException {
-        this.headingLabel.setText("Welcome to DashBoard" + " " + this.usernameLabel.getText() + "!");
-        Node[] nodes = new Node[10];
-        for (int i = 0; i < nodes.length; i++) {
-            nodes[i] = (Node) FXMLLoader.load(App.class.getResource("card.fxml"));
-            this.cardsVbox.getChildren().add(nodes[i]);
-        }
+        
     }
 
     @FXML
@@ -81,6 +129,36 @@ public class DashboardController{
 
     @FXML
     void wishListOnMouseClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void moreButton1OnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void moreButton2OnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void moreButton3OnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void moreButton4OnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void nextButtonOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void previousButtonOnAction(ActionEvent event) {
 
     }
 

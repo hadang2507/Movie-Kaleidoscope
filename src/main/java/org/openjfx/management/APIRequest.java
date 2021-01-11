@@ -76,7 +76,7 @@ public class APIRequest {
 
         return movies;
     }
-
+    
     public List<Movie> getMoviesFromGenres() {
         List<Genre> genres = getGenreAndId();
         String genres_id = "";
