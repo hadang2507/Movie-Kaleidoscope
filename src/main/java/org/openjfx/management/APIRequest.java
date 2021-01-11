@@ -76,7 +76,7 @@ public class APIRequest {
 
         return movies;
     }
-    
+
     public List<Movie> getMoviesFromGenres() {
         List<Genre> genres = getGenreAndId();
         String genres_id = "";
@@ -92,7 +92,7 @@ public class APIRequest {
             Gson g = new Gson();
             JsonElement element = g.fromJson(jsonStringInline, JsonElement.class);
             JsonObject value = element.getAsJsonObject();
-            JsonArray moviesList = value.getAsJsonArray();
+            JsonArray moviesList = value.getAsJsonArray("results");
 
             Type movieListType = new TypeToken<ArrayList<Movie>>() {
             }.getType();
