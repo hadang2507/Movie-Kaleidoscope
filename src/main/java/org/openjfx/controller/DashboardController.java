@@ -9,10 +9,15 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import org.openjfx.App;
+import org.openjfx.management.APIRequest;
+import org.openjfx.model.Movie;
 
 import java.io.IOException;
+import java.util.List;
 
 public class DashboardController{
+
+    private List<Movie> movies;
 
     @FXML
     private Label usernameLabel;
@@ -94,7 +99,16 @@ public class DashboardController{
 
     @FXML
     public void initialize() throws IOException {
-        
+        this.usernameLabel.setText(App.username);
+
+        DatabaseController dbController = new DatabaseController();
+        if (!dbController.getChosenGenreIDFromTableUSERS_GENRE(App.username).isEmpty()) {
+            APIRequest apiRequest = new APIRequest();
+            this.movies = apiRequest.getMoviesFromGenres();
+            for (Movie each: this.movies) {
+                System.out.println(each);
+            }
+        }
     }
 
     @FXML
