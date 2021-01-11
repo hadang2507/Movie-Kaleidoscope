@@ -76,4 +76,11 @@ public class APIRequest {
         return movies;
     }
 
+    public List<Movie> getMoviesFromGenreIDs() {
+        List<Movie> movies = new ArrayList<>();
+
+        // App.username
+        return movies;
+    }
+
 }

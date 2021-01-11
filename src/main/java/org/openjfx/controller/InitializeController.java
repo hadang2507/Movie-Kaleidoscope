@@ -152,6 +152,7 @@ public class InitializeController {
         String username = App.username;
 
         if (this.returnChosenGenres(this.userChoices).size() < 3) {
+            this.youChooseLabel.setText("You must choose at least 3 genres");
             return;
         }
 
