@@ -13,7 +13,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class APIRequest {
@@ -96,6 +95,30 @@ public class APIRequest {
 
             Type movieListType = new TypeToken<ArrayList<Movie>>(){}.getType();
             List<Movie> movies = g.fromJson(moviesList, movieListType);
+            return movies;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<Movie> getTopRatedMovies(){
+        String url = "https://api.themoviedb.org/3/movie/top_rated?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US&page=1";
+        //String url2_page2 = "https://api.themoviedb.org/3/movie/top_rated?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US&page=2";
+        try {
+            String jsonStringInline = getJsonFromURL(url);
+            System.out.println(jsonStringInline);
+
+            Gson g = new Gson();
+            JsonElement element = g.fromJson(jsonStringInline, JsonElement.class);
+            JsonObject value = element.getAsJsonObject();
+            JsonArray moviesList = value.getAsJsonArray("results");
+
+            Type movieListType = new TypeToken<ArrayList<Movie>>(){}.getType();
+            List<Movie> movies = g.fromJson(moviesList, movieListType);
+
+
             return movies;
 
         } catch (IOException e) {
