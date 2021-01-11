@@ -183,7 +183,7 @@ public class DashboardController{
 
     @FXML
     void previousButtonOnAction(ActionEvent event) {
-        if (this.count - 4 > 0) {
+        if (this.count - 4 >= 0) {
             this.count -= 4;
             this.setMovieBriefDetailsOnDashBoard();
         }

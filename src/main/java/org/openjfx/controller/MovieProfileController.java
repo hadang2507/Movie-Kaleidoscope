@@ -43,6 +43,9 @@ public class MovieProfileController {
     private Button submitRateButton;
 
     @FXML
+    private Button addToWishListButton;
+
+    @FXML
     public void initialize() {
         DashboardController dashBoard = new DashboardController();
         this.movie = App.recommendedMovies.get(App.indexOfChosenMovie);
@@ -60,14 +63,15 @@ public class MovieProfileController {
 
 
         this.rateComboBox.getItems().add("1");
-        this.rateComboBox.getItems().add("1.5");
         this.rateComboBox.getItems().add("2");
-        this.rateComboBox.getItems().add("2.5");
         this.rateComboBox.getItems().add("3");
-        this.rateComboBox.getItems().add("3.5");
         this.rateComboBox.getItems().add("4");
-        this.rateComboBox.getItems().add("4.5");
         this.rateComboBox.getItems().add("5");
+        this.rateComboBox.getItems().add("6");
+        this.rateComboBox.getItems().add("7");
+        this.rateComboBox.getItems().add("8");
+        this.rateComboBox.getItems().add("9");
+        this.rateComboBox.getItems().add("10");
         this.rateComboBox.setValue("0");
     }
 
@@ -82,7 +86,10 @@ public class MovieProfileController {
         System.out.println(choice);
     }
 
+    @FXML
+    void addToWishListButtonOnAction(ActionEvent event) {
 
+    }
 
 }
 

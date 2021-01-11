@@ -22,6 +22,7 @@
       <Label layoutY="276.0" prefHeight="50.0" prefWidth="200.0" text="How would you rate this movie ?" textFill="WHITE" />
       <ComboBox fx:id="rateComboBox" layoutX="200.0" layoutY="288.0" prefHeight="26.0" prefWidth="74.0" />
       <Button fx:id="submitRateButton" layoutX="300.0" layoutY="289.0" mnemonicParsing="false" onAction="#submitRateOnAction" style="-fx-background-color: #08B4E1;" text="Save Changes" textFill="WHITE" />
-      <Button fx:id="backToHomeButton" layoutX="414.0" layoutY="289.0" mnemonicParsing="false" onAction="#backToHomeOnAction" style="-fx-background-color: #08B4E1;" text="Back to Home" textFill="WHITE" />
+      <Button fx:id="backToHomeButton" layoutX="299.0" layoutY="335.0" mnemonicParsing="false" onAction="#backToHomeOnAction" style="-fx-background-color: #08B4E1;" text="Back to Home" textFill="WHITE" />
+      <Button fx:id="addToWishListButton" layoutX="409.0" layoutY="289.0" mnemonicParsing="false" onAction="#addToWishListButtonOnAction" style="-fx-background-color: #08B4E1;" text="Add to Wish List" textFill="WHITE" />
    </children>
 </AnchorPane>

@@ -125,4 +125,21 @@ public class DatabaseController {
         }
         return results;
     }
+
+    public void updateProfileFromTableUSERS(User user) {
+        String query = "UPDATE USERS SET password = ?, firstname = ?, lastname = ? WHERE username = ?";
+        Connection conn = this.connect();
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, user.getPassword());
+            pstmt.setString(2, user.getFirstName());
+            pstmt.setString(3, user.getLastName());
+            pstmt.setString(4, user.getUsername());
+
+            pstmt.executeUpdate();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
