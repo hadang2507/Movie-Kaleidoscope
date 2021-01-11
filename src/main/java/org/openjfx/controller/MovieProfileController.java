@@ -7,10 +7,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import org.openjfx.App;
+import org.openjfx.model.Genre;
+import org.openjfx.model.Movie;
 
 import java.io.IOException;
 
 public class MovieProfileController {
+    private Movie movie;
+
     @FXML
     private ImageView movieImage;
 
@@ -40,6 +44,21 @@ public class MovieProfileController {
 
     @FXML
     public void initialize() {
+        DashboardController dashBoard = new DashboardController();
+        this.movie = App.recommendedMovies.get(App.indexOfChosenMovie);
+
+        this.nameLabel.setText(this.movie.getTitle());
+        String genre = "";
+        for (Integer each: this.movie.getGenres()) {
+            genre += each + " / ";
+        }
+        this.genreLabel.setText(genre);
+        this.averageRateLabel.setText("Average Rate: " + this.movie.getVote_average());
+        this.descriptionLabel.setText(this.movie.getOverview());
+        this.descriptionLabel.setMaxWidth(520);
+        this.descriptionLabel.setWrapText(true);
+
+
         this.rateComboBox.getItems().add("1");
         this.rateComboBox.getItems().add("1.5");
         this.rateComboBox.getItems().add("2");

@@ -2,6 +2,8 @@ package org.openjfx.management;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+import org.openjfx.App;
+import org.openjfx.controller.DatabaseController;
 import org.openjfx.model.Genre;
 import org.openjfx.model.Movie;
 
@@ -11,6 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class APIRequest {
@@ -78,30 +81,26 @@ public class APIRequest {
     }
 
     public List<Movie> getMoviesFromGenres() {
-        List<Genre> genres = getGenreAndId();
-        String genres_id = "";
+        DatabaseController dbController = new DatabaseController();
+        List<Genre> genres = dbController.getChosenGenreIDFromTableUSERS_GENRE(App.username);
 
-        for (Genre each : genres) {
-            genres_id += each.getId() + "%2C";
-        }
-
-        String url = "https://api.themoviedb.org/3/discover/movie?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US&sort_by=popularity.desc&include_video=false&page=1&with_genres=" + genres_id;
+        String url = "https://api.themoviedb.org/3/discover/movie?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US&sort_by=popularity.desc&include_video=false&page=1&with_genres=" + genres.get(0).getName();
         try {
             String jsonStringInline = getJsonFromURL(url);
+            System.out.println(jsonStringInline);
 
             Gson g = new Gson();
             JsonElement element = g.fromJson(jsonStringInline, JsonElement.class);
             JsonObject value = element.getAsJsonObject();
             JsonArray moviesList = value.getAsJsonArray("results");
 
-            Type movieListType = new TypeToken<ArrayList<Movie>>() {
-            }.getType();
+            Type movieListType = new TypeToken<ArrayList<Movie>>(){}.getType();
             List<Movie> movies = g.fromJson(moviesList, movieListType);
             return movies;
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-    return null;
+        return null;
     }
 }

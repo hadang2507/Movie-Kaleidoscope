@@ -113,11 +113,7 @@
             <AnchorPane prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-<<<<<<< HEAD
                   <Label fx:id="movieLabel4" layoutX="120.0" layoutY="14.0" text="Movie" />
-=======
-                  <Label fx:id="movieLabel3 " layoutX="120.0" layoutY="14.0" text="Movie" />
->>>>>>> 465ed79520cb354e7ab04e7fe3400d07b414fe74
                   <Label fx:id="genreLabel4" layoutX="120.0" layoutY="41.0" text="Genre" />
                   <Label fx:id="voteLabel4" layoutX="120.0" layoutY="69.0" text="vote_average" />
                   <Button fx:id="moreButton4" layoutX="291.0" layoutY="38.0" mnemonicParsing="false" onAction="#moreButton4OnAction" text="More" />

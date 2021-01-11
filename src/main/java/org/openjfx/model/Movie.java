@@ -8,7 +8,7 @@ public class Movie {
     private String adult;
     private String backdrop_path;
     private String belongs_to_collection;
-    private List<Genre> genres;
+    private List<Integer> genre_ids;
     private String homepage;
     private String imdb_id;
     private String original_language;
@@ -31,7 +31,7 @@ public class Movie {
                  String adult,
                  String backdrop_path,
                  String belongs_to_collection,
-                 List<Genre> genres,
+                 List<Integer> genre_ids,
                  String homepage,
                  String imdb_id,
                  String original_language,
@@ -52,7 +52,7 @@ public class Movie {
         this.adult = adult;
         this.backdrop_path = backdrop_path;
         this.belongs_to_collection = belongs_to_collection;
-        this.genres = genres;
+        this.genre_ids = genre_ids;
         this.homepage = homepage;
         this.imdb_id = imdb_id;
         this.original_language = original_language;
@@ -73,8 +73,8 @@ public class Movie {
         return id;
     }
 
-    public List<Genre> getGenres() {
-        return genres;
+    public List<Integer> getGenres() {
+        return genre_ids;
     }
 
     public String getAdult() {
