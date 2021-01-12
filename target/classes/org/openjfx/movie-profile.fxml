@@ -7,21 +7,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller.MovieProfileController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #032541;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller.MovieProfileController">
    <children>
-      <ImageView fx:id="movieImage" fitHeight="160.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="movieImage" fitHeight="160.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" />
       <VBox layoutX="200.0" prefHeight="160.0" prefWidth="400.0">
          <children>
-            <Label fx:id="nameLabel" prefHeight="40.0" prefWidth="400.0" text="Name (year)" />
-            <Label fx:id="directorLabel" prefHeight="40.0" prefWidth="400.0" text="Directors" />
-            <Label fx:id="genreLabel" prefHeight="40.0" prefWidth="400.0" text="Genre" />
-            <Label fx:id="averageRateLabel" prefHeight="40.0" prefWidth="400.0" text="Average rate" />
+            <Label fx:id="nameLabel" prefHeight="40.0" prefWidth="400.0" text="Name (year)" textFill="WHITE" />
+            <Label fx:id="directorLabel" prefHeight="40.0" prefWidth="400.0" text="Directors" textFill="WHITE" />
+            <Label fx:id="genreLabel" prefHeight="40.0" prefWidth="400.0" text="Genre" textFill="WHITE" />
+            <Label fx:id="averageRateLabel" prefHeight="40.0" prefWidth="400.0" text="Average rate" textFill="WHITE" />
          </children>
       </VBox>
-      <Label fx:id="descriptionLabel" layoutY="191.0" prefHeight="50.0" prefWidth="600.0" text="Description" />
-      <Label layoutY="276.0" prefHeight="50.0" prefWidth="200.0" text="How would you rate this movie ?" />
+      <Label fx:id="descriptionLabel" layoutX="40.0" layoutY="160.0" prefHeight="100.0" prefWidth="543.0" text="Description" textAlignment="CENTER" textFill="WHITE" />
+      <Label layoutY="276.0" prefHeight="50.0" prefWidth="200.0" text="How would you rate this movie ?" textFill="WHITE" />
       <ComboBox fx:id="rateComboBox" layoutX="200.0" layoutY="288.0" prefHeight="26.0" prefWidth="74.0" />
-      <Button fx:id="submitRateButton" layoutX="300.0" layoutY="289.0" mnemonicParsing="false" onAction="#submitRateOnAction" text="Save Changes" />
-      <Button fx:id="backToHomeButton" layoutX="414.0" layoutY="289.0" mnemonicParsing="false" onAction="#backToHomeOnAction" text="Back to Home" />
+      <Button fx:id="submitRateButton" layoutX="300.0" layoutY="289.0" mnemonicParsing="false" onAction="#submitRateOnAction" style="-fx-background-color: #08B4E1;" text="Save Changes" textFill="WHITE" />
+      <Button fx:id="backToHomeButton" layoutX="299.0" layoutY="335.0" mnemonicParsing="false" onAction="#backToHomeOnAction" style="-fx-background-color: #08B4E1;" text="Back to Home" textFill="WHITE" />
+      <Button fx:id="addToWishListButton" layoutX="409.0" layoutY="289.0" mnemonicParsing="false" onAction="#addToWishListButtonOnAction" style="-fx-background-color: #08B4E1;" text="Add to Wish List" textFill="WHITE" />
    </children>
 </AnchorPane>

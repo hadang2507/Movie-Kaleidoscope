@@ -41,6 +41,11 @@
                   <Font size="13.0" />
                </font>
             </Label>
+            <Button fx:id="forgetPasswordButton" layoutX="36.0" layoutY="347.0" mnemonicParsing="false" onAction="#forgetPasswordButtonOnAction" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #08B4E1;" text="Forget Password ?" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </right>

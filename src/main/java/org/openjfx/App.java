@@ -4,14 +4,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.openjfx.model.Movie;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
     public static String username = null;
+    public static List<Movie> recommendedMovies;
+    public static int indexOfChosenMovie;
 
     private static Scene scene;
     private static Stage stage;

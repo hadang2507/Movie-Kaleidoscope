@@ -151,10 +151,13 @@ public class InitializeController {
     void finishButtonOnAction(ActionEvent event) throws IOException {
         String username = App.username;
 
-        // call function that make query
-        // TODO
+        if (this.returnChosenGenres(this.userChoices).size() < 3) {
+            this.youChooseLabel.setText("You must choose at least 3 genres");
+            return;
+        }
+
         DatabaseController dbController = new DatabaseController();
-        dbController.insertGenreIDToTableUSERS_GENRE(this.genres);
+        dbController.insertGenreIDToTableUSERS_GENRE(this.returnChosenGenres(this.userChoices));
 
         // move to dashboard
         App.setRoot("dashboard");

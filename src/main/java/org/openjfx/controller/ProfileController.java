@@ -53,6 +53,8 @@ public class ProfileController {
         user.setFirstName(this.firstNameTextField.getText());
         user.setLastName(this.lastNameTextField.getText());
 
+        DatabaseController dbController = new DatabaseController();
+        dbController.updateProfileFromTableUSERS(this.user);
         this.fillTextFields();
     }
 

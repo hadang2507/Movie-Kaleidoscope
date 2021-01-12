@@ -2,6 +2,8 @@ package org.openjfx.management;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+import org.openjfx.App;
+import org.openjfx.controller.DatabaseController;
 import org.openjfx.model.Genre;
 import org.openjfx.model.Movie;
 
@@ -30,7 +32,7 @@ public class APIRequest {
         return this.returnStringFromJson(url);
     }
 
-    private String returnStringFromJson (URL url) throws IOException{
+    private String returnStringFromJson(URL url) throws IOException {
         String value = "";
         Scanner scan = new Scanner(url.openStream());
 
@@ -46,7 +48,7 @@ public class APIRequest {
     }
 
 
-    public List<Genre> getGenreAndId(){
+    public List<Genre> getGenreAndId() {
         String url = "https://api.themoviedb.org/3/genre/movie/list?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US";
 
         try {
@@ -58,7 +60,8 @@ public class APIRequest {
 
             JsonArray genres = value.getAsJsonArray("genres");
 
-            Type genreListType = new TypeToken<ArrayList<Genre>>(){}.getType();
+            Type genreListType = new TypeToken<ArrayList<Genre>>() {
+            }.getType();
             List<Genre> genresList = g.fromJson(genres, genreListType);
 
             return genresList;
@@ -75,5 +78,54 @@ public class APIRequest {
 
         return movies;
     }
+
+    public List<Movie> getMoviesFromGenres() {
+        DatabaseController dbController = new DatabaseController();
+        List<Genre> genres = dbController.getChosenGenreIDFromTableUSERS_GENRE(App.username);
+
+        String url = "https://api.themoviedb.org/3/discover/movie?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US&sort_by=popularity.desc&include_video=false&page=1&with_genres=" + genres.get(0).getName();
+        try {
+            String jsonStringInline = getJsonFromURL(url);
+            System.out.println(jsonStringInline);
+
+            Gson g = new Gson();
+            JsonElement element = g.fromJson(jsonStringInline, JsonElement.class);
+            JsonObject value = element.getAsJsonObject();
+            JsonArray moviesList = value.getAsJsonArray("results");
+
+            Type movieListType = new TypeToken<ArrayList<Movie>>(){}.getType();
+            List<Movie> movies = g.fromJson(moviesList, movieListType);
+            return movies;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<Movie> getTopRatedMovies(){
+        String url = "https://api.themoviedb.org/3/movie/top_rated?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US&page=1";
+        //String url2_page2 = "https://api.themoviedb.org/3/movie/top_rated?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US&page=2";
+        try {
+            String jsonStringInline = getJsonFromURL(url);
+            System.out.println(jsonStringInline);
+
+            Gson g = new Gson();
+            JsonElement element = g.fromJson(jsonStringInline, JsonElement.class);
+            JsonObject value = element.getAsJsonObject();
+            JsonArray moviesList = value.getAsJsonArray("results");
+
+            Type movieListType = new TypeToken<ArrayList<Movie>>(){}.getType();
+            List<Movie> movies = g.fromJson(moviesList, movieListType);
+
+
+            return movies;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 }
