@@ -136,8 +136,11 @@ public class DashboardController{
 
     @FXML
     void topRatedOnMouseClicked(MouseEvent event) {
+        this.count = 0;
+        App.indexOfChosenMovie = 0;
         APIRequest apiRequest = new APIRequest();
-        apiRequest.getTopRatedMovies();
+        App.recommendedMovies = apiRequest.getTopRatedMovies();
+        this.setMovieBriefDetailsOnDashBoard();
     }
 
     @FXML
