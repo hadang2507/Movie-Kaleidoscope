@@ -15,7 +15,7 @@
          <children>
             <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../OneDrive/Desktop/132877542_697285407644547_7122502184623410210_n.png" />
+                  <Image url="@logo.png" />
                </image>
             </ImageView>
             <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#usernameOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Username" textFill="WHITE">
@@ -85,7 +85,7 @@
          <children>
             <AnchorPane prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imageView1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="movieLabel1" layoutX="120.0" layoutY="14.0" text="Movie" />
                   <Label fx:id="genreLabel1" layoutX="120.0" layoutY="41.0" text="Genre" />
                   <Label fx:id="voteLabel1" layoutX="120.0" layoutY="69.0" text="vote_average" />
@@ -94,7 +94,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imageView2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="movieLabel2" layoutX="120.0" layoutY="14.0" text="Movie" />
                   <Label fx:id="genreLabel2" layoutX="120.0" layoutY="41.0" text="Genre" />
                   <Label fx:id="voteLabel2" layoutX="120.0" layoutY="69.0" text="vote_average" />
@@ -103,7 +103,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imageView3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="movieLabel3" layoutX="120.0" layoutY="14.0" text="Movie" />
                   <Label fx:id="genreLabel3" layoutX="120.0" layoutY="41.0" text="Genre" />
                   <Label fx:id="voteLabel3" layoutX="120.0" layoutY="69.0" text="vote_average" />
@@ -112,7 +112,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imageView4" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="movieLabel4" layoutX="120.0" layoutY="14.0" text="Movie" />
                   <Label fx:id="genreLabel4" layoutX="120.0" layoutY="41.0" text="Genre" />
                   <Label fx:id="voteLabel4" layoutX="120.0" layoutY="69.0" text="vote_average" />

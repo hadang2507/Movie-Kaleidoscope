@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import org.openjfx.App;
@@ -40,6 +41,9 @@ public class DashboardController{
     private Label headingLabel;
 
     @FXML
+    private ImageView imageView1;
+
+    @FXML
     private Label movieLabel1;
 
     @FXML
@@ -50,6 +54,9 @@ public class DashboardController{
 
     @FXML
     private Button moreButton1;
+
+    @FXML
+    private ImageView imageView2;
 
     @FXML
     private Label movieLabel2;
@@ -64,6 +71,9 @@ public class DashboardController{
     private Button moreButton2;
 
     @FXML
+    private ImageView imageView3;
+
+    @FXML
     private Label movieLabel3;
 
     @FXML
@@ -74,6 +84,9 @@ public class DashboardController{
 
     @FXML
     private Button moreButton3;
+
+    @FXML
+    private ImageView imageView4;
 
     @FXML
     private Label movieLabel4;
