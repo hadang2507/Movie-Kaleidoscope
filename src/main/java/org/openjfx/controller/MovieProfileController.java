@@ -6,8 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 import org.openjfx.App;
-import org.openjfx.model.Genre;
 import org.openjfx.model.Movie;
 
 import java.io.IOException;
@@ -55,6 +55,8 @@ public class MovieProfileController {
         for (Integer each: this.movie.getGenres()) {
             genre += each + " / ";
         }
+        Image image = new Image(this.movie.getPoster_path());
+        this.movieImage.setImage(image);
         this.genreLabel.setText(genre);
         this.averageRateLabel.setText("Average Rate: " + this.movie.getVote_average());
         this.descriptionLabel.setText(this.movie.getOverview());
@@ -83,12 +85,25 @@ public class MovieProfileController {
     @FXML
     void submitRateOnAction(ActionEvent event) {
         String choice = this.rateComboBox.getSelectionModel().getSelectedItem();
-        System.out.println(choice);
+
+        DatabaseController dbController = new DatabaseController();
+        String movie_id = this.movie.getId();
+
+        if (!dbController.checkIfMovieIsRatedFromTableUSERS_MOVIE(movie_id)) {
+            dbController.insertRatedMovieFromTableUSERS_MOVIE(movie_id, choice);
+        } else {
+            dbController.updateRatedMovieFromTableUSERS_Movie(movie_id, choice);
+        }
     }
 
     @FXML
     void addToWishListButtonOnAction(ActionEvent event) {
+        DatabaseController dbController = new DatabaseController();
+        String movie_id = this.movie.getId();
 
+        if (!dbController.checkIfMovieIDIsAlreadyAddedFromTableUSERS_WISHLISTS(movie_id)) {
+            dbController.insertMovieToTableUSERS_WISHLISTS(movie_id);
+        }
     }
 
 }

@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -39,6 +40,9 @@ public class DashboardController{
 
     @FXML
     private Label headingLabel;
+
+    @FXML
+    private Label logOutLabel;
 
     @FXML
     private ImageView imageView1;
@@ -113,9 +117,8 @@ public class DashboardController{
     public void initialize() throws IOException {
         this.count = 0;
         App.indexOfChosenMovie = 0;
-
+        this.usernameLabel.setText(App.username);
         if (App.recommendedMovies == null) {
-            this.usernameLabel.setText(App.username);
 
             DatabaseController dbController = new DatabaseController();
             if (!dbController.getChosenGenreIDFromTableUSERS_GENRE(App.username).isEmpty()) {
@@ -125,6 +128,12 @@ public class DashboardController{
         }
 
         this.setMovieBriefDetailsOnDashBoard();
+    }
+
+    @FXML
+    void logOutOnMouseClicked(MouseEvent event) throws IOException{
+        App.resetGlobalVariables();
+        App.setRoot("login");
     }
 
     @FXML
@@ -214,6 +223,8 @@ public class DashboardController{
         }
         this.genreLabel1.setText(genres1);
         this.voteLabel1.setText(App.recommendedMovies.get(count).getVote_average());
+        Image image1 = new Image(App.recommendedMovies.get(count).getPoster_path());
+        this.imageView1.setImage(image1);
 
         this.movieLabel2.setText(App.recommendedMovies.get(count + 1).getTitle());
         String genres2 = "";
@@ -222,6 +233,8 @@ public class DashboardController{
         }
         this.genreLabel2.setText(genres2);
         this.voteLabel2.setText(App.recommendedMovies.get(count + 1).getVote_average());
+        Image image2 = new Image(App.recommendedMovies.get(count + 1).getPoster_path());
+        this.imageView2.setImage(image2);
 
         this.movieLabel3.setText(App.recommendedMovies.get(count + 2).getTitle());
         String genres3 = "";
@@ -230,6 +243,8 @@ public class DashboardController{
         }
         this.genreLabel3.setText(genres3);
         this.voteLabel3.setText(App.recommendedMovies.get(count + 2).getVote_average());
+        Image image3 = new Image(App.recommendedMovies.get(count + 2).getPoster_path());
+        this.imageView3.setImage(image3);
 
         this.movieLabel4.setText(App.recommendedMovies.get(count + 3).getTitle());
         String genres4 = "";
@@ -238,5 +253,7 @@ public class DashboardController{
         }
         this.genreLabel4.setText(genres4);
         this.voteLabel4.setText(App.recommendedMovies.get(count + 3).getVote_average());
+        Image image4 = new Image(App.recommendedMovies.get(count + 3).getPoster_path());
+        this.imageView4.setImage(image4);
     }
 }

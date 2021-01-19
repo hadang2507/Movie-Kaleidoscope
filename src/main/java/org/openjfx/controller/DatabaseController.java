@@ -42,6 +42,20 @@ public class DatabaseController {
         }
     }
 
+    public void insertMovieToTableUSERS_WISHLISTS(String movie_id) {
+        String query = "INSERT INTO USERS_WISHLISTS('username', 'movie_id') VALUES (?, ?)";
+        Connection conn = this.connect();
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, App.username);
+            pstmt.setString(2, movie_id);
+            pstmt.executeUpdate();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void insertUserToTableUSERS(User user) {
         //
         String query = "INSERT INTO USERS('username','password','firstname', 'lastname') VALUES(?, ?, ?, ?)";
@@ -58,20 +72,19 @@ public class DatabaseController {
         }
     }
 
-    public boolean checkIfExistAccountFromTableUSERS(User user) {
-        String query = "SELECT * FROM USERS where username = ?";
+    public void insertRatedMovieFromTableUSERS_MOVIE(String movie_id, String choice) {
+        String query = "INSERT INTO USERS_MOVIE('username', 'movie_id', 'rated') VALUES (?, ?, ?)";
         Connection conn = this.connect();
+
         try (PreparedStatement pstmt = conn.prepareStatement(query)) {
-            pstmt.setString(1, user.getUsername());
-            ResultSet results = pstmt.executeQuery();
+            pstmt.setString(1, App.username);
+            pstmt.setString(2, movie_id);
+            pstmt.setString(3, choice);
+            pstmt.executeUpdate();
             conn.close();
-            if (results.next()) {
-                return true;
-            }
         } catch (SQLException e) {
-            System.out.println("error: " + e.getMessage());
+            e.printStackTrace();
         }
-        return false;
     }
 
     public User getUserInfoFromTableUSERS(String username){
@@ -120,10 +133,33 @@ public class DatabaseController {
             while (resultSet.next()) {
                 results.add(new Genre(resultSet.getString("genre"), resultSet.getString("id_genre")));
             }
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return results;
+    }
+
+    public List<String> getMovieIDFromTableUSERS_WISHLISTS() {
+        List<String> movies_ids = new ArrayList<>();
+
+        String query = "SELECT movie_id from USERS_WISHLISTS WHERE username = ?";
+        Connection conn = this.connect();
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, App.username);
+            ResultSet results = pstmt.executeQuery();
+
+            while (results.next()) {
+                movies_ids.add(results.getString("movie_id"));
+            }
+
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return movies_ids;
     }
 
     public void updateProfileFromTableUSERS(User user) {
@@ -141,5 +177,75 @@ public class DatabaseController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void updateRatedMovieFromTableUSERS_Movie(String movie_id, String choice) {
+        String query = "UPDATE USERS_MOVIE SET rated = ? WHERE username = ? AND movie_id = ?";
+        Connection conn = this.connect();
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, choice);
+            pstmt.setString(2, App.username);
+            pstmt.setString(3, movie_id);
+
+            pstmt.executeUpdate();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean checkIfExistAccountFromTableUSERS(User user) {
+        String query = "SELECT * FROM USERS where username = ?";
+        Connection conn = this.connect();
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, user.getUsername());
+            ResultSet results = pstmt.executeQuery();
+            conn.close();
+            if (results.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println("error: " + e.getMessage());
+        }
+        return false;
+    }
+
+    public boolean checkIfMovieIDIsAlreadyAddedFromTableUSERS_WISHLISTS(String movie_id) {
+        String query = "SELECT * FROM USERS_WISHLISTS where username = ? AND movie_id = ?";
+        Connection conn = this.connect();
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, App.username);
+            pstmt.setString(2, movie_id);
+            ResultSet results = pstmt.executeQuery();
+            conn.close();
+            if (results.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println("error: " + e.getMessage());
+        }
+        return false;
+    }
+
+    public boolean checkIfMovieIsRatedFromTableUSERS_MOVIE(String movie_id) {
+        String query = "SELECT * FROM USERS_MOVIE where username = ? AND movie_id = ?";
+        Connection conn = this.connect();
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, App.username);
+            pstmt.setString(2, movie_id);
+            ResultSet results = pstmt.executeQuery();
+            conn.close();
+
+            if (results.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println("error: " + e.getMessage());
+        }
+        return false;
     }
 }

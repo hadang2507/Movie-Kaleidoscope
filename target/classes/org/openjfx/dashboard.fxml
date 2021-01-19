@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="535.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller.DashboardController">
+<AnchorPane prefHeight="560.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller.DashboardController">
    <children>
-      <VBox prefHeight="535.0" prefWidth="200.0" style="-fx-background-color: #032541;">
+      <VBox prefHeight="560.0" prefWidth="200.0" style="-fx-background-color: #032541;">
          <children>
             <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -74,6 +74,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
+            <Label fx:id="logOutLabel" alignment="CENTER" onMouseClicked="#logOutOnMouseClicked" prefHeight="30.0" prefWidth="200.0" text="Log out" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
          </children>
       </VBox>
       <Label fx:id="headingLabel" alignment="CENTER" layoutX="200.0" prefHeight="42.0" prefWidth="382.0" style="-fx-background-color: #87CCA5;" text="Label" textFill="WHITE">
@@ -81,7 +89,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <VBox layoutX="200.0" layoutY="68.0" prefHeight="332.0" prefWidth="382.0">
+      <VBox layoutX="211.0" layoutY="68.0" prefHeight="431.0" prefWidth="371.0" style="-fx-spacing: 10;">
          <children>
             <AnchorPane prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -121,7 +129,7 @@
             </AnchorPane>
          </children>
       </VBox>
-      <Button fx:id="nextButton" layoutX="459.0" layoutY="495.0" mnemonicParsing="false" onAction="#nextButtonOnAction" prefHeight="20.0" prefWidth="80.0" text="Next" />
-      <Button fx:id="previousButton" layoutX="251.0" layoutY="495.0" mnemonicParsing="false" onAction="#previousButtonOnAction" prefHeight="20.0" prefWidth="80.0" text="Previous" />
+      <Button fx:id="nextButton" layoutX="458.0" layoutY="508.0" mnemonicParsing="false" onAction="#nextButtonOnAction" prefHeight="20.0" prefWidth="80.0" text="Next" />
+      <Button fx:id="previousButton" layoutX="251.0" layoutY="508.0" mnemonicParsing="false" onAction="#previousButtonOnAction" prefHeight="20.0" prefWidth="80.0" text="Previous" />
    </children>
 </AnchorPane>
