@@ -85,7 +85,15 @@ public class MovieProfileController {
     @FXML
     void submitRateOnAction(ActionEvent event) {
         String choice = this.rateComboBox.getSelectionModel().getSelectedItem();
-        System.out.println(choice);
+
+        DatabaseController dbController = new DatabaseController();
+        String movie_id = this.movie.getId();
+
+        if (!dbController.checkIfMovieIsRatedFromTableUSERS_MOVIE(movie_id)) {
+            dbController.insertRatedMovieFromTableUSERS_MOVIE(movie_id, choice);
+        } else {
+            dbController.updateRatedMovieFromTableUSERS_Movie(movie_id, choice);
+        }
     }
 
     @FXML

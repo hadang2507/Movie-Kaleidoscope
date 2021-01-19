@@ -72,6 +72,21 @@ public class DatabaseController {
         }
     }
 
+    public void insertRatedMovieFromTableUSERS_MOVIE(String movie_id, String choice) {
+        String query = "INSERT INTO USERS_MOVIE('username', 'movie_id', 'rated') VALUES (?, ?, ?)";
+        Connection conn = this.connect();
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, App.username);
+            pstmt.setString(2, movie_id);
+            pstmt.setString(3, choice);
+            pstmt.executeUpdate();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public User getUserInfoFromTableUSERS(String username){
         String query = "SELECT * FROM USERS where username = ?";
         Connection conn = this.connect();
@@ -164,6 +179,22 @@ public class DatabaseController {
         }
     }
 
+    public void updateRatedMovieFromTableUSERS_Movie(String movie_id, String choice) {
+        String query = "UPDATE USERS_MOVIE SET rated = ? WHERE username = ? AND movie_id = ?";
+        Connection conn = this.connect();
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, choice);
+            pstmt.setString(2, App.username);
+            pstmt.setString(3, movie_id);
+
+            pstmt.executeUpdate();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public boolean checkIfExistAccountFromTableUSERS(User user) {
         String query = "SELECT * FROM USERS where username = ?";
         Connection conn = this.connect();
@@ -190,6 +221,25 @@ public class DatabaseController {
             pstmt.setString(2, movie_id);
             ResultSet results = pstmt.executeQuery();
             conn.close();
+            if (results.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println("error: " + e.getMessage());
+        }
+        return false;
+    }
+
+    public boolean checkIfMovieIsRatedFromTableUSERS_MOVIE(String movie_id) {
+        String query = "SELECT * FROM USERS_MOVIE where username = ? AND movie_id = ?";
+        Connection conn = this.connect();
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, App.username);
+            pstmt.setString(2, movie_id);
+            ResultSet results = pstmt.executeQuery();
+            conn.close();
+
             if (results.next()) {
                 return true;
             }
