@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 import org.openjfx.App;
 import org.openjfx.model.Genre;
 import org.openjfx.model.Movie;
@@ -55,6 +56,8 @@ public class MovieProfileController {
         for (Integer each: this.movie.getGenres()) {
             genre += each + " / ";
         }
+        Image image = new Image(this.movie.getPoster_path());
+        this.movieImage.setImage(image);
         this.genreLabel.setText(genre);
         this.averageRateLabel.setText("Average Rate: " + this.movie.getVote_average());
         this.descriptionLabel.setText(this.movie.getOverview());
