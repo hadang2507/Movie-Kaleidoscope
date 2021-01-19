@@ -15,7 +15,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextField layoutX="176.0" layoutY="27.0" />
+      <TextField layoutX="176.0" layoutY="27.0" fx:id="searchTextField" onAction="#searchButtonOnAction"/>
       <AnchorPane layoutX="14.0" layoutY="122.0" prefHeight="135.0" prefWidth="130.0">
          <children>
             <ImageView fitHeight="90.0" fitWidth="110.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" />

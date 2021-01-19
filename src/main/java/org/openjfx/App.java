@@ -16,6 +16,7 @@ public class App extends Application {
     public static String username = null;
     public static List<Movie> recommendedMovies;
     public static int indexOfChosenMovie;
+    public static String searchText = null;
 
     private static Scene scene;
     private static Stage stage;
