@@ -172,7 +172,7 @@ public class DashboardController{
 
     @FXML
     void wishListOnMouseClicked(MouseEvent event) {
-
+        
     }
 
     @FXML

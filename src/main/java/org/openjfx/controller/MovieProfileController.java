@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import org.openjfx.App;
-import org.openjfx.model.Genre;
 import org.openjfx.model.Movie;
 
 import java.io.IOException;
@@ -91,7 +90,12 @@ public class MovieProfileController {
 
     @FXML
     void addToWishListButtonOnAction(ActionEvent event) {
+        DatabaseController dbController = new DatabaseController();
+        String movie_id = this.movie.getId();
 
+        if (!dbController.checkIfMovieIDIsAlreadyAddedFromTableUSERS_WISHLISTS(movie_id)) {
+            dbController.insertMovieToTableUSERS_WISHLISTS(movie_id);
+        }
     }
 
 }
