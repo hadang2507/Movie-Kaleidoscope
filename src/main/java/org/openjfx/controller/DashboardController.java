@@ -42,6 +42,9 @@ public class DashboardController{
     private Label headingLabel;
 
     @FXML
+    private Label logOutLabel;
+
+    @FXML
     private ImageView imageView1;
 
     @FXML
@@ -114,9 +117,8 @@ public class DashboardController{
     public void initialize() throws IOException {
         this.count = 0;
         App.indexOfChosenMovie = 0;
-
+        this.usernameLabel.setText(App.username);
         if (App.recommendedMovies == null) {
-            this.usernameLabel.setText(App.username);
 
             DatabaseController dbController = new DatabaseController();
             if (!dbController.getChosenGenreIDFromTableUSERS_GENRE(App.username).isEmpty()) {
@@ -126,6 +128,12 @@ public class DashboardController{
         }
 
         this.setMovieBriefDetailsOnDashBoard();
+    }
+
+    @FXML
+    void logOutOnMouseClicked(MouseEvent event) throws IOException{
+        App.resetGlobalVariables();
+        App.setRoot("login");
     }
 
     @FXML

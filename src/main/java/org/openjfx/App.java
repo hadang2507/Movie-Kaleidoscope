@@ -24,7 +24,6 @@ public class App extends Application {
     public void start(Stage stageInitial) throws IOException {
         stage = stageInitial;
         scene = new Scene(loadFXML("login"));
-//        scene = new Scene(loadFXML("initialization"));
         stage.setScene(scene);
         stage.show();
     }
@@ -39,6 +38,12 @@ public class App extends Application {
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
+    }
+
+    public static void resetGlobalVariables() {
+        username = null;
+        recommendedMovies = null;
+        indexOfChosenMovie = 0;
     }
 
     public static void main(String[] args) {
