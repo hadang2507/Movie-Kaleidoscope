@@ -4,6 +4,7 @@ import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import org.openjfx.App;
 import org.openjfx.controller.DatabaseController;
+import org.openjfx.controller.SearchController;
 import org.openjfx.model.Genre;
 import org.openjfx.model.Movie;
 
@@ -86,7 +87,7 @@ public class APIRequest {
         String url = "https://api.themoviedb.org/3/discover/movie?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US&sort_by=popularity.desc&include_video=false&page=1&with_genres=" + genres.get(0).getName();
         try {
             String jsonStringInline = getJsonFromURL(url);
-            System.out.println(jsonStringInline);
+            //System.out.println(jsonStringInline);
 
             Gson g = new Gson();
             JsonElement element = g.fromJson(jsonStringInline, JsonElement.class);
@@ -127,5 +128,29 @@ public class APIRequest {
         return null;
     }
 
+    public List<Movie> getSearchedMovies(String searchText) {
+        searchText = searchText.replace(" ", "%20");
+        String url = "https://api.themoviedb.org/3/search/multi?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US&page=1&include_adult=true&query=" + searchText;
+        System.out.println(url);
+        try {
+            String jsonStringInline = getJsonFromURL(url);
+            System.out.println(jsonStringInline);
 
+            Gson g = new Gson();
+            JsonElement element = g.fromJson(jsonStringInline, JsonElement.class);
+            JsonObject value = element.getAsJsonObject();
+            JsonArray moviesList = value.getAsJsonArray("results");
+
+            Type movieListType = new TypeToken<ArrayList<Movie>>() {
+            }.getType();
+            List<Movie> movies = g.fromJson(moviesList, movieListType);
+
+
+            return movies;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

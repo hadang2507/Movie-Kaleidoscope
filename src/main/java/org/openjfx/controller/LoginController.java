@@ -75,6 +75,7 @@ public class LoginController {
         App.setRoot("register");
     }
 
+
     public void emptyTextField() {
         this.usernameTextField.setText("");
         this.passwordTextField.setText("");

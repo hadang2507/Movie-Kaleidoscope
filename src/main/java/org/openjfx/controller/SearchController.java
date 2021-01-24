@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.openjfx.App;
+import org.openjfx.management.APIRequest;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 
@@ -42,10 +44,12 @@ public class SearchController {
 
     @FXML
     void searchButtonOnAction(ActionEvent event) {
-        String search = this.searchTextField.getText();
+        String searchText = this.searchTextField.getText();
 
-        DatabaseController dbController = new DatabaseController();
-
+        if (!searchText.equals("")) {
+            APIRequest apiRequest = new APIRequest();
+            App.recommendedMovies = apiRequest.getSearchedMovies(searchText);
+        }
     }
 
 }

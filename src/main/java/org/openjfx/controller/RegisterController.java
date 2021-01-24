@@ -10,6 +10,7 @@ import org.openjfx.App;
 import org.openjfx.model.User;
 
 import java.io.IOException;
+import java.util.Locale;
 
 public class RegisterController {
 
@@ -60,7 +61,7 @@ public class RegisterController {
         String last_name = this.lastNameTextField.getText();
         String username = this.userNameTextField.getText();
         String pass = this.passwordTextField.getText();
-        String confirm_pass = this.confirmPasswordField.getText();
+        String confirmPass = this.confirmPasswordField.getText();
 
         if (first_name.equals("") || last_name.equals("") || username.equals("") || pass.equals("")){
             this.registerMessageLabel.setText("You have to fill all the information boxes");
@@ -68,7 +69,20 @@ public class RegisterController {
             return;
         }
 
-        if (!confirm_pass.equals(pass)){
+        boolean lengthRule = pass.length() >= 6 && pass.length() < 20;
+        boolean upperRule = !pass.equals(pass.toLowerCase());
+        boolean charRule = pass.matches("(.*)[a-z](.*)");
+        boolean numRule = pass.matches("(.*)[0-9](.*)");
+        boolean nonAlphaRule = pass.matches("(.*)[^A-Za-z0-9](.*)");
+        int ruleCount = (lengthRule? 1 : 0) + (upperRule? 1 : 0) + (charRule? 1 : 0) + (numRule? 1 : 0) + (nonAlphaRule? 1 : 0);
+
+        if (ruleCount < 5){
+            this.registerMessageLabel.setText("Incorrect Password Format!");
+            this.emptyTextField();
+            return;
+        }
+
+        if (!confirmPass.equals(pass)){
             this.registerMessageLabel.setText("Do not match with your password");
             this.emptyTextField();
             return;
