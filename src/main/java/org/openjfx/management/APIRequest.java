@@ -128,8 +128,7 @@ public class APIRequest {
         return null;
     }
 
-    public List<Movie> getSearchedMovies() {
-        String searchText = App.searchText;
+    public List<Movie> getSearchedMovies(String searchText) {
         searchText = searchText.replace(" ", "%20");
         String url = "https://api.themoviedb.org/3/search/multi?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US&page=1&include_adult=true&query=" + searchText;
         System.out.println(url);

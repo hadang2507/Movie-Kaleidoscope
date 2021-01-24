@@ -46,7 +46,6 @@ public class LoginController {
         // 3. check if account exist in database, if not tell user to register
         // additional: forgot password
         String username = this.usernameTextField.getText();
-
         String pass = this.passwordTextField.getText();
 
         if (username.equals("") || pass.equals("")){

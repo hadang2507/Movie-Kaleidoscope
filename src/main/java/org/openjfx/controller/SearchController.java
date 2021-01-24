@@ -44,10 +44,12 @@ public class SearchController {
 
     @FXML
     void searchButtonOnAction(ActionEvent event) {
-        App.searchText = searchTextField.getText();
-        System.out.println(App.searchText);
-        APIRequest apiRequest = new APIRequest();
-        apiRequest.getSearchedMovies();
+        String searchText = this.searchTextField.getText();
+
+        if (!searchText.equals("")) {
+            APIRequest apiRequest = new APIRequest();
+            App.recommendedMovies = apiRequest.getSearchedMovies(searchText);
+        }
     }
 
 }
