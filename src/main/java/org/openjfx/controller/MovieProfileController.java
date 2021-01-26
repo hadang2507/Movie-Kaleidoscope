@@ -8,9 +8,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import org.openjfx.App;
+import org.openjfx.management.APIRequest;
+import org.openjfx.model.Genre;
 import org.openjfx.model.Movie;
 
 import java.io.IOException;
+import java.util.List;
 
 public class MovieProfileController {
     private Movie movie;
@@ -47,13 +50,13 @@ public class MovieProfileController {
 
     @FXML
     public void initialize() {
-        DashboardController dashBoard = new DashboardController();
+        List<Genre> genres = new APIRequest().getGenreAndId();
         this.movie = App.recommendedMovies.get(App.indexOfChosenMovie);
 
         this.nameLabel.setText(this.movie.getTitle());
         String genre = "";
         for (Integer each: this.movie.getGenres()) {
-            genre += each + " / ";
+            genre += getGenreNameFromId(genres, each) + " / ";
         }
         Image image = new Image(this.movie.getPoster_path());
         this.movieImage.setImage(image);
@@ -104,6 +107,15 @@ public class MovieProfileController {
         if (!dbController.checkIfMovieIDIsAlreadyAddedFromTableUSERS_WISHLISTS(movie_id)) {
             dbController.insertMovieToTableUSERS_WISHLISTS(movie_id);
         }
+    }
+
+    private String getGenreNameFromId(List<Genre> list, Integer genreId) {
+        for (Genre each: list) {
+            if (each.getId().equals(String.valueOf(genreId))) {
+                return each.getName();
+            }
+        }
+        return null;
     }
 
 }

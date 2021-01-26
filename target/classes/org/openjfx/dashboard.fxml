@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="560.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller.DashboardController">
+<AnchorPane prefHeight="560.0" prefWidth="625.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller.DashboardController">
    <children>
       <VBox prefHeight="560.0" prefWidth="200.0" style="-fx-background-color: #032541;">
          <children>
@@ -84,12 +84,12 @@
             </Label>
          </children>
       </VBox>
-      <Label fx:id="headingLabel" alignment="CENTER" layoutX="200.0" prefHeight="42.0" prefWidth="382.0" style="-fx-background-color: #87CCA5;" text="Label" textFill="WHITE">
+      <Label fx:id="headingLabel" alignment="CENTER" layoutX="200.0" prefHeight="42.0" prefWidth="425.0" style="-fx-background-color: #87CCA5;" text="Label" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <VBox layoutX="211.0" layoutY="68.0" prefHeight="431.0" prefWidth="371.0" style="-fx-spacing: 10;">
+      <VBox layoutX="211.0" layoutY="68.0" prefHeight="431.0" prefWidth="414.0" style="-fx-spacing: 10;">
          <children>
             <AnchorPane prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -97,7 +97,7 @@
                   <Label fx:id="movieLabel1" layoutX="120.0" layoutY="14.0" text="Movie" />
                   <Label fx:id="genreLabel1" layoutX="120.0" layoutY="41.0" text="Genre" />
                   <Label fx:id="voteLabel1" layoutX="120.0" layoutY="69.0" text="vote_average" />
-                  <Button fx:id="moreButton1" layoutX="291.0" layoutY="38.0" mnemonicParsing="false" onAction="#moreButton1OnAction" text="More" />
+                  <Button fx:id="moreButton1" layoutX="342.0" layoutY="37.0" mnemonicParsing="false" onAction="#moreButton1OnAction" text="More" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="100.0" prefWidth="200.0">
@@ -106,7 +106,7 @@
                   <Label fx:id="movieLabel2" layoutX="120.0" layoutY="14.0" text="Movie" />
                   <Label fx:id="genreLabel2" layoutX="120.0" layoutY="41.0" text="Genre" />
                   <Label fx:id="voteLabel2" layoutX="120.0" layoutY="69.0" text="vote_average" />
-                  <Button fx:id="moreButton2" layoutX="291.0" layoutY="38.0" mnemonicParsing="false" onAction="#moreButton2OnAction" text="More" />
+                  <Button fx:id="moreButton2" layoutX="342.0" layoutY="37.0" mnemonicParsing="false" onAction="#moreButton2OnAction" text="More" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="100.0" prefWidth="200.0">
@@ -115,7 +115,7 @@
                   <Label fx:id="movieLabel3" layoutX="120.0" layoutY="14.0" text="Movie" />
                   <Label fx:id="genreLabel3" layoutX="120.0" layoutY="41.0" text="Genre" />
                   <Label fx:id="voteLabel3" layoutX="120.0" layoutY="69.0" text="vote_average" />
-                  <Button fx:id="moreButton3" layoutX="291.0" layoutY="38.0" mnemonicParsing="false" onAction="#moreButton3OnAction" text="More" />
+                  <Button fx:id="moreButton3" layoutX="342.0" layoutY="37.0" mnemonicParsing="false" onAction="#moreButton3OnAction" text="More" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="100.0" prefWidth="200.0">
@@ -124,7 +124,7 @@
                   <Label fx:id="movieLabel4" layoutX="120.0" layoutY="14.0" text="Movie" />
                   <Label fx:id="genreLabel4" layoutX="120.0" layoutY="41.0" text="Genre" />
                   <Label fx:id="voteLabel4" layoutX="120.0" layoutY="69.0" text="vote_average" />
-                  <Button fx:id="moreButton4" layoutX="291.0" layoutY="38.0" mnemonicParsing="false" onAction="#moreButton4OnAction" text="More" />
+                  <Button fx:id="moreButton4" layoutX="342.0" layoutY="37.0" mnemonicParsing="false" onAction="#moreButton4OnAction" text="More" />
                </children>
             </AnchorPane>
          </children>

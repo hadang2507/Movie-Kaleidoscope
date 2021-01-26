@@ -10,9 +10,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import org.openjfx.App;
 import org.openjfx.management.APIRequest;
+import org.openjfx.model.Genre;
 import org.openjfx.model.Movie;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DashboardController{
     private int count;
@@ -118,11 +122,20 @@ public class DashboardController{
         this.count = 0;
         App.indexOfChosenMovie = 0;
         this.usernameLabel.setText(App.username);
+        DatabaseController dbController = new DatabaseController();
+        APIRequest apiRequest = new APIRequest();
+
+        // TODO
+        // check if user has any rated movies ?
+        if (dbController.checkIfUserHasRatedAnyMovie()) {
+            String movieId = dbController.getRatedMovieIdFromTableUSERS_MOVIE();
+            App.recommendedMovies = apiRequest.getRecommendedMoviesByMovieId(movieId);
+        }
+
+        // if user has not rated any movies and from initialization layout
         if (App.recommendedMovies == null) {
 
-            DatabaseController dbController = new DatabaseController();
             if (!dbController.getChosenGenreIDFromTableUSERS_GENRE(App.username).isEmpty()) {
-                APIRequest apiRequest = new APIRequest();
                 App.recommendedMovies = apiRequest.getMoviesFromGenres();
             }
         }
@@ -143,7 +156,12 @@ public class DashboardController{
 
     @FXML
     void ratedMoviesOnMouseClicked(MouseEvent event) {
+        DatabaseController dbController = new DatabaseController();
+        APIRequest apiRequest = new APIRequest();
+        this.count = 0;
+        App.indexOfChosenMovie = 0;
 
+        this.setMovieBriefDetailsOnDashBoard();
     }
 
     @FXML
@@ -172,7 +190,19 @@ public class DashboardController{
 
     @FXML
     void wishListOnMouseClicked(MouseEvent event) {
+        DatabaseController dbController = new DatabaseController();
+        APIRequest apiRequest = new APIRequest();
+        this.count = 0;
+        App.indexOfChosenMovie = 0;
 
+        List<String> movieIds = dbController.getMovieIDFromTableUSERS_WISHLISTS();
+        System.out.println(movieIds);
+        App.recommendedMovies = new ArrayList<>();
+        for (String each: movieIds) {
+            System.out.println(apiRequest.getMovieByMovieId(each));
+            App.recommendedMovies.add(apiRequest.getMovieByMovieId(each));
+        }
+        this.setMovieBriefDetailsOnDashBoard();
     }
 
     @FXML
@@ -216,10 +246,11 @@ public class DashboardController{
     }
 
     private void setMovieBriefDetailsOnDashBoard() {
+        List<Genre> genres = new APIRequest().getGenreAndId();
         this.movieLabel1.setText(App.recommendedMovies.get(count).getTitle());
         String genres1 = "";
         for (Integer each: App.recommendedMovies.get(count).getGenres()) {
-            genres1 += each + " / ";
+            genres1 += getGenreNameFromId(genres, each) + " / ";
         }
         this.genreLabel1.setText(genres1);
         this.voteLabel1.setText(App.recommendedMovies.get(count).getVote_average());
@@ -229,7 +260,7 @@ public class DashboardController{
         this.movieLabel2.setText(App.recommendedMovies.get(count + 1).getTitle());
         String genres2 = "";
         for (Integer each: App.recommendedMovies.get(count + 1).getGenres()) {
-            genres2 += each + " / ";
+            genres2 += getGenreNameFromId(genres, each) + " / ";
         }
         this.genreLabel2.setText(genres2);
         this.voteLabel2.setText(App.recommendedMovies.get(count + 1).getVote_average());
@@ -239,7 +270,7 @@ public class DashboardController{
         this.movieLabel3.setText(App.recommendedMovies.get(count + 2).getTitle());
         String genres3 = "";
         for (Integer each: App.recommendedMovies.get(count + 2).getGenres()) {
-            genres3 += each + " / ";
+            genres3 += getGenreNameFromId(genres, each) + " / ";
         }
         this.genreLabel3.setText(genres3);
         this.voteLabel3.setText(App.recommendedMovies.get(count + 2).getVote_average());
@@ -249,11 +280,20 @@ public class DashboardController{
         this.movieLabel4.setText(App.recommendedMovies.get(count + 3).getTitle());
         String genres4 = "";
         for (Integer each: App.recommendedMovies.get(count + 3).getGenres()) {
-            genres4 += each + " / ";
+            genres4 += getGenreNameFromId(genres, each) + " / ";
         }
         this.genreLabel4.setText(genres4);
         this.voteLabel4.setText(App.recommendedMovies.get(count + 3).getVote_average());
         Image image4 = new Image(App.recommendedMovies.get(count + 3).getPoster_path());
         this.imageView4.setImage(image4);
+    }
+
+    private String getGenreNameFromId(List<Genre> list, Integer genreId) {
+        for (Genre each: list) {
+            if (each.getId().equals(String.valueOf(genreId))) {
+                return each.getName();
+            }
+        }
+        return null;
     }
 }

@@ -8,6 +8,7 @@ import org.openjfx.model.User;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class DatabaseController {
 
@@ -162,6 +163,34 @@ public class DatabaseController {
         return movies_ids;
     }
 
+    public String getRatedMovieIdFromTableUSERS_MOVIE() {
+        String query = "SELECT movie_id from USERS_MOVIE WHERE username = ?";
+        Connection conn = this.connect();
+        List<String> movieIds = new ArrayList<>();
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, App.username);
+            ResultSet results = pstmt.executeQuery();
+
+            while (results.next()) {
+                movieIds.add(results.getString("movie_id"));
+            }
+
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if (movieIds.isEmpty()) {
+            return "";
+        }
+        return movieIds.get(new Random().nextInt(movieIds.size()));
+    }
+
+    public List<Movie> getMoviesFromUSERS_MOVIE() {
+        // TODO Ha
+        return new ArrayList<>();
+    }
+
     public void updateProfileFromTableUSERS(User user) {
         String query = "UPDATE USERS SET password = ?, firstname = ?, lastname = ? WHERE username = ?";
         Connection conn = this.connect();
@@ -237,6 +266,25 @@ public class DatabaseController {
         try (PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, App.username);
             pstmt.setString(2, movie_id);
+            ResultSet results = pstmt.executeQuery();
+            conn.close();
+
+            if (results.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println("error: " + e.getMessage());
+        }
+        return false;
+    }
+
+    public boolean checkIfUserHasRatedAnyMovie() {
+        String query = "SELECT * FROM USERS_MOVIE WHERE username = ?";
+        Connection conn = this.connect();
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)){
+            pstmt.setString(1, App.username);
+
             ResultSet results = pstmt.executeQuery();
             conn.close();
 

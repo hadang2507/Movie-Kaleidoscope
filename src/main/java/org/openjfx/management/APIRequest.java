@@ -154,7 +154,7 @@ public class APIRequest {
         return null;
     }
 
-    public List<Movie> getRecommendedMoviesFromId(String movieId){
+    public List<Movie> getRecommendedMoviesByMovieId(String movieId){
 
         String url = "https://api.themoviedb.org/3/movie/"+ movieId +"/recommendations?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US&page=1";
         System.out.println(url);
@@ -179,7 +179,7 @@ public class APIRequest {
         return null;
     }
 
-    public Movie getMovieFromId (String movieId){
+    public Movie getMovieByMovieId (String movieId){
         String url = "https://api.themoviedb.org/3/movie/"+movieId+"?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US";
         System.out.println(url);
         try {
@@ -190,7 +190,7 @@ public class APIRequest {
             JsonElement element = g.fromJson(jsonStringInline, JsonElement.class);
             JsonObject value = element.getAsJsonObject();
             Type movieType = new TypeToken<Movie>() {}.getType();
-            Movie movie = g.fromJson(value, Movie.class);
+            Movie movie = g.fromJson(value, movieType);
             System.out.println(movie);
             return movie;
 
