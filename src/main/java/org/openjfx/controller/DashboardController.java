@@ -249,8 +249,14 @@ public class DashboardController{
         List<Genre> genres = new APIRequest().getGenreAndId();
         this.movieLabel1.setText(App.recommendedMovies.get(count).getTitle());
         String genres1 = "";
+        int i1 = 0;
         for (Integer each: App.recommendedMovies.get(count).getGenres()) {
-            genres1 += getGenreNameFromId(genres, each) + " / ";
+            if(i1++ == App.recommendedMovies.get(count).getGenres().size() - 1){
+                genres1 += getGenreNameFromId(genres, each);
+            }else{
+                genres1 += getGenreNameFromId(genres, each) + " / ";
+            }
+
         }
         this.genreLabel1.setText(genres1);
         this.voteLabel1.setText(App.recommendedMovies.get(count).getVote_average());
@@ -259,8 +265,13 @@ public class DashboardController{
 
         this.movieLabel2.setText(App.recommendedMovies.get(count + 1).getTitle());
         String genres2 = "";
+        int i2 = 0;
         for (Integer each: App.recommendedMovies.get(count + 1).getGenres()) {
-            genres2 += getGenreNameFromId(genres, each) + " / ";
+            if(i2++ == App.recommendedMovies.get(count + 1).getGenres().size() - 1){
+                genres2 += getGenreNameFromId(genres, each);
+            }else{
+                genres2 += getGenreNameFromId(genres, each) + " / ";
+            }
         }
         this.genreLabel2.setText(genres2);
         this.voteLabel2.setText(App.recommendedMovies.get(count + 1).getVote_average());
@@ -269,8 +280,14 @@ public class DashboardController{
 
         this.movieLabel3.setText(App.recommendedMovies.get(count + 2).getTitle());
         String genres3 = "";
+        int i3 = 0;
         for (Integer each: App.recommendedMovies.get(count + 2).getGenres()) {
-            genres3 += getGenreNameFromId(genres, each) + " / ";
+            if(i3++ == App.recommendedMovies.get(count + 2).getGenres().size() - 1){
+                genres3 += getGenreNameFromId(genres, each);
+            }else{
+                genres3 += getGenreNameFromId(genres, each) + " / ";
+            }
+
         }
         this.genreLabel3.setText(genres3);
         this.voteLabel3.setText(App.recommendedMovies.get(count + 2).getVote_average());
@@ -279,8 +296,14 @@ public class DashboardController{
 
         this.movieLabel4.setText(App.recommendedMovies.get(count + 3).getTitle());
         String genres4 = "";
+        int i4 = 0;
         for (Integer each: App.recommendedMovies.get(count + 3).getGenres()) {
-            genres4 += getGenreNameFromId(genres, each) + " / ";
+            if(i4++ == App.recommendedMovies.get(count + 3).getGenres().size() - 1){
+                genres4 += getGenreNameFromId(genres, each);
+            }else{
+                genres4 += getGenreNameFromId(genres, each) + " / ";
+            }
+
         }
         this.genreLabel4.setText(genres4);
         this.voteLabel4.setText(App.recommendedMovies.get(count + 3).getVote_average());
