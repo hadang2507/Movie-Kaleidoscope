@@ -181,11 +181,9 @@ public class APIRequest {
 
     public Movie getMovieByMovieId (String movieId){
         String url = "https://api.themoviedb.org/3/movie/"+ movieId +"?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US";
-        //System.out.println(url);
         try {
             String jsonStringInline = getJsonFromURL(url);
             System.out.println(jsonStringInline);
-
             Gson g = new Gson();
             Movie movie = g.fromJson(jsonStringInline, Movie.class);
             return movie;

@@ -198,11 +198,8 @@ public class DashboardController{
         List<String> movieIds = dbController.getMovieIDFromTableUSERS_WISHLISTS();
         System.out.println(movieIds);
         App.recommendedMovies = new ArrayList<>();
-        for (String each: movieIds) {
-            System.out.println(apiRequest.getMovieByMovieId(each));
-            App.recommendedMovies.add(apiRequest.getMovieByMovieId(each));
-        }
-        this.setMovieBriefDetailsOnDashBoard();
+        System.out.println(apiRequest.getMovieByMovieId("5763"));
+
     }
 
     @FXML
