@@ -15,6 +15,7 @@ import org.openjfx.model.Movie;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -194,11 +195,14 @@ public class DashboardController{
         APIRequest apiRequest = new APIRequest();
         this.count = 0;
         App.indexOfChosenMovie = 0;
-
-        List<String> movieIds = dbController.getMovieIDFromTableUSERS_WISHLISTS();
-        System.out.println(movieIds);
         App.recommendedMovies = new ArrayList<>();
-        System.out.println(apiRequest.getMovieByMovieId("5763"));
+        List<String> movieIds = dbController.getMovieIDFromTableUSERS_WISHLISTS();
+        for (int i = 0; i < movieIds.size(); i++) {
+            App.recommendedMovies.add(apiRequest.getMovieByMovieId(movieIds.get(i)));
+            System.out.println(App.recommendedMovies.get(i).getTitle());
+        }
+        this.setMovieBriefDetailsOnDashBoard();
+
 
     }
 
