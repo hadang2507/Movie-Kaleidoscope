@@ -15,7 +15,9 @@ import java.util.List;
 public class App extends Application {
     public static String username = null;
     public static List<Movie> recommendedMovies;
+    public static List<Movie> searchMovies;
     public static int indexOfChosenMovie;
+    public static int indexOfChosenSearchMovie;
 
     private static Scene scene;
     private static Stage stage;

@@ -184,7 +184,6 @@ public class APIRequest {
         System.out.println(movieId);
         try {
             String jsonStringInline = getJsonFromURL(url);
-            //System.out.println(jsonStringInline);
             Gson g = new Gson();
             Movie movie = g.fromJson(jsonStringInline, Movie.class);
             return movie;

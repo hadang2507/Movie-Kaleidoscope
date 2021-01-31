@@ -116,9 +116,6 @@ public class DashboardController{
     private Button previousButton;
 
     @FXML
-    private VBox cardsVbox = new VBox();
-
-    @FXML
     public void initialize() throws IOException {
         this.count = 0;
         App.indexOfChosenMovie = 0;

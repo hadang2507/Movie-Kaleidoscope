@@ -50,9 +50,13 @@ public class MovieProfileController {
 
     @FXML
     public void initialize() {
-        List<Genre> genres = new APIRequest().getGenreAndId();
-        this.movie = App.recommendedMovies.get(App.indexOfChosenMovie);
+        if (App.searchMovies.size() != 0) {
+            this.movie = App.searchMovies.get(App.indexOfChosenSearchMovie);
+        } else {
+            this.movie = App.recommendedMovies.get(App.indexOfChosenMovie);
+        }
 
+        List<Genre> genres = new APIRequest().getGenreAndId();
         this.nameLabel.setText(this.movie.getTitle());
         String genre = "";
         for (Integer each: this.movie.getGenres()) {
