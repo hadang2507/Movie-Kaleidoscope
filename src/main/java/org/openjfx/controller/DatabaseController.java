@@ -186,9 +186,25 @@ public class DatabaseController {
         return movieIds.get(new Random().nextInt(movieIds.size()));
     }
 
-    public List<Movie> getMoviesFromUSERS_MOVIE() {
-        // TODO Ha
-        return new ArrayList<>();
+    public List<String> getMovieIDsFromUSERS_MOVIE() {
+        List<String> movies_ids = new ArrayList<>();
+
+        String query = "SELECT movie_id from USERS_MOVIE WHERE username = ?";
+        Connection conn = this.connect();
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, App.username);
+            ResultSet results = pstmt.executeQuery();
+
+            while (results.next()) {
+                movies_ids.add(results.getString("movie_id"));
+            }
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return movies_ids;
     }
 
     public void updateProfileFromTableUSERS(User user) {

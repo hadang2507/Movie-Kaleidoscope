@@ -161,8 +161,24 @@ public class DashboardController{
 //
 //        this.setMovieBriefDetailsOnDashBoard();
         DatabaseController dbController = new DatabaseController();
+        List<String> movie_ids = dbController.getMovieIDsFromUSERS_MOVIE();
+        List<Movie> moviesList = new ArrayList<>();
 
-        this.setEmptyMovieBriefDetailsOnDashBoard();
+        if (movie_ids.isEmpty()) {
+            this.headingLabel.setText("Please rate at least one movie");
+            this.setEmptyMovieBriefDetailsOnDashBoard();
+        } else {
+            this.setEmptyMovieBriefDetailsOnDashBoard();
+            APIRequest apiRequest = new APIRequest();
+            for (String id: movie_ids) {
+                moviesList.add(apiRequest.getMovieByMovieId(id));
+            }
+            App.recommendedMovies = moviesList;
+            this.count = 0;
+            App.indexOfChosenMovie = 0;
+            this.setMovieBriefDetailsOnDashBoard();
+        }
+
     }
 
     @FXML
@@ -251,65 +267,79 @@ public class DashboardController{
         this.movieLabel1.setText(App.recommendedMovies.get(count).getTitle());
         String genres1 = "";
         int i1 = 0;
-        for (Integer each: App.recommendedMovies.get(count).getGenres()) {
-            if(i1++ == App.recommendedMovies.get(count).getGenres().size() - 1){
-                genres1 += getGenreNameFromId(genres, each);
-            }else{
-                genres1 += getGenreNameFromId(genres, each) + " / ";
+        if (App.recommendedMovies.get(count).getGenres() != null) {
+            for (Integer each: App.recommendedMovies.get(count).getGenres()) {
+                if (i1++ == App.recommendedMovies.get(count).getGenres().size() - 1){
+                    genres1 += getGenreNameFromId(genres, each);
+                } else {
+                    genres1 += getGenreNameFromId(genres, each) + " / ";
+                }
             }
-
         }
         this.genreLabel1.setText(genres1);
         this.voteLabel1.setText(App.recommendedMovies.get(count).getVote_average());
         Image image1 = new Image(App.recommendedMovies.get(count).getPoster_path());
         this.imageView1.setImage(image1);
 
-        this.movieLabel2.setText(App.recommendedMovies.get(count + 1).getTitle());
-        String genres2 = "";
-        int i2 = 0;
-        for (Integer each: App.recommendedMovies.get(count + 1).getGenres()) {
-            if(i2++ == App.recommendedMovies.get(count + 1).getGenres().size() - 1){
-                genres2 += getGenreNameFromId(genres, each);
-            }else{
-                genres2 += getGenreNameFromId(genres, each) + " / ";
-            }
-        }
-        this.genreLabel2.setText(genres2);
-        this.voteLabel2.setText(App.recommendedMovies.get(count + 1).getVote_average());
-        Image image2 = new Image(App.recommendedMovies.get(count + 1).getPoster_path());
-        this.imageView2.setImage(image2);
-
-        this.movieLabel3.setText(App.recommendedMovies.get(count + 2).getTitle());
-        String genres3 = "";
-        int i3 = 0;
-        for (Integer each: App.recommendedMovies.get(count + 2).getGenres()) {
-            if(i3++ == App.recommendedMovies.get(count + 2).getGenres().size() - 1){
-                genres3 += getGenreNameFromId(genres, each);
-            }else{
-                genres3 += getGenreNameFromId(genres, each) + " / ";
+        if (App.recommendedMovies.size() % 2 == 0) {
+            this.movieLabel2.setText(App.recommendedMovies.get(count + 1).getTitle());
+            String genres2 = "";
+            int i2 = 0;
+            if (App.recommendedMovies.get(count + 1).getGenres() != null) {
+                for (Integer each: App.recommendedMovies.get(count + 1).getGenres()) {
+                    if(i2++ == App.recommendedMovies.get(count + 1).getGenres().size() - 1){
+                        genres2 += getGenreNameFromId(genres, each);
+                    }else{
+                        genres2 += getGenreNameFromId(genres, each) + " / ";
+                    }
+                }
             }
 
+            this.genreLabel2.setText(genres2);
+            this.voteLabel2.setText(App.recommendedMovies.get(count + 1).getVote_average());
+            Image image2 = new Image(App.recommendedMovies.get(count + 1).getPoster_path());
+            this.imageView2.setImage(image2);
         }
-        this.genreLabel3.setText(genres3);
-        this.voteLabel3.setText(App.recommendedMovies.get(count + 2).getVote_average());
-        Image image3 = new Image(App.recommendedMovies.get(count + 2).getPoster_path());
-        this.imageView3.setImage(image3);
 
-        this.movieLabel4.setText(App.recommendedMovies.get(count + 3).getTitle());
-        String genres4 = "";
-        int i4 = 0;
-        for (Integer each: App.recommendedMovies.get(count + 3).getGenres()) {
-            if(i4++ == App.recommendedMovies.get(count + 3).getGenres().size() - 1){
-                genres4 += getGenreNameFromId(genres, each);
-            }else{
-                genres4 += getGenreNameFromId(genres, each) + " / ";
+        if (App.recommendedMovies.size() == 3 || App.recommendedMovies.size() >= 3) {
+            this.movieLabel3.setText(App.recommendedMovies.get(count + 2).getTitle());
+            String genres3 = "";
+            int i3 = 0;
+
+            if (App.recommendedMovies.get(count + 2).getGenres() != null) {
+                for (Integer each: App.recommendedMovies.get(count + 2).getGenres()) {
+                    if(i3++ == App.recommendedMovies.get(count + 2).getGenres().size() - 1){
+                        genres3 += getGenreNameFromId(genres, each);
+                    }else{
+                        genres3 += getGenreNameFromId(genres, each) + " / ";
+                    }
+                }
+            }
+            this.genreLabel3.setText(genres3);
+            this.voteLabel3.setText(App.recommendedMovies.get(count + 2).getVote_average());
+            Image image3 = new Image(App.recommendedMovies.get(count + 2).getPoster_path());
+            this.imageView3.setImage(image3);
+        }
+
+        if (App.recommendedMovies.size() == 4 || App.recommendedMovies.size() >= 4) {
+            this.movieLabel4.setText(App.recommendedMovies.get(count + 3).getTitle());
+            String genres4 = "";
+            int i4 = 0;
+            if (App.recommendedMovies.get(count + 3).getGenres() != null) {
+                for (Integer each: App.recommendedMovies.get(count + 3).getGenres()) {
+                    if(i4++ == App.recommendedMovies.get(count + 3).getGenres().size() - 1){
+                        genres4 += getGenreNameFromId(genres, each);
+                    }else{
+                        genres4 += getGenreNameFromId(genres, each) + " / ";
+                    }
+                }
             }
 
+            this.genreLabel4.setText(genres4);
+            this.voteLabel4.setText(App.recommendedMovies.get(count + 3).getVote_average());
+            Image image4 = new Image(App.recommendedMovies.get(count + 3).getPoster_path());
+            this.imageView4.setImage(image4);
         }
-        this.genreLabel4.setText(genres4);
-        this.voteLabel4.setText(App.recommendedMovies.get(count + 3).getVote_average());
-        Image image4 = new Image(App.recommendedMovies.get(count + 3).getPoster_path());
-        this.imageView4.setImage(image4);
     }
 
     private void setEmptyMovieBriefDetailsOnDashBoard() {

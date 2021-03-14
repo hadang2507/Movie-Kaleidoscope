@@ -59,8 +59,10 @@ public class MovieProfileController {
         List<Genre> genres = new APIRequest().getGenreAndId();
         this.nameLabel.setText(this.movie.getTitle());
         String genre = "";
-        for (Integer each: this.movie.getGenres()) {
-            genre += getGenreNameFromId(genres, each) + " / ";
+        if (this.movie.getGenres() != null) {
+            for (Integer each: this.movie.getGenres()) {
+                genre += getGenreNameFromId(genres, each) + " / ";
+            }
         }
         Image image = new Image(this.movie.getPoster_path());
         this.movieImage.setImage(image);
