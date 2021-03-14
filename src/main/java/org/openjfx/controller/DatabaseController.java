@@ -163,7 +163,7 @@ public class DatabaseController {
         return movies_ids;
     }
 
-    public String getRatedMovieIdFromTableUSERS_MOVIE() {
+    public String getRandomRatedMovieIdFromTableUSERS_MOVIE() {
         String query = "SELECT movie_id from USERS_MOVIE WHERE username = ?";
         Connection conn = this.connect();
         List<String> movieIds = new ArrayList<>();

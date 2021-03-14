@@ -84,7 +84,7 @@
             </Label>
          </children>
       </VBox>
-      <Label fx:id="headingLabel" alignment="CENTER" layoutX="200.0" prefHeight="42.0" prefWidth="425.0" style="-fx-background-color: #87CCA5;" text="Label" textFill="WHITE">
+      <Label fx:id="headingLabel" alignment="CENTER" layoutX="200.0" prefHeight="42.0" prefWidth="425.0" style="-fx-background-color: #032541;" text="Label" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

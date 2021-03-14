@@ -126,7 +126,7 @@ public class DashboardController{
         // TODO
         // check if user has any rated movies ?
         if (dbController.checkIfUserHasRatedAnyMovie()) {
-            String movieId = dbController.getRatedMovieIdFromTableUSERS_MOVIE();
+            String movieId = dbController.getRandomRatedMovieIdFromTableUSERS_MOVIE();
             App.recommendedMovies = apiRequest.getRecommendedMoviesByMovieId(movieId);
         }
 
@@ -154,12 +154,15 @@ public class DashboardController{
 
     @FXML
     void ratedMoviesOnMouseClicked(MouseEvent event) {
+//        DatabaseController dbController = new DatabaseController();
+//        APIRequest apiRequest = new APIRequest();
+//        this.count = 0;
+//        App.indexOfChosenMovie = 0;
+//
+//        this.setMovieBriefDetailsOnDashBoard();
         DatabaseController dbController = new DatabaseController();
-        APIRequest apiRequest = new APIRequest();
-        this.count = 0;
-        App.indexOfChosenMovie = 0;
 
-        this.setMovieBriefDetailsOnDashBoard();
+        this.setEmptyMovieBriefDetailsOnDashBoard();
     }
 
     @FXML
@@ -307,6 +310,34 @@ public class DashboardController{
         this.voteLabel4.setText(App.recommendedMovies.get(count + 3).getVote_average());
         Image image4 = new Image(App.recommendedMovies.get(count + 3).getPoster_path());
         this.imageView4.setImage(image4);
+    }
+
+    private void setEmptyMovieBriefDetailsOnDashBoard() {
+        this.movieLabel1.setText("");
+        this.genreLabel1.setText("");
+        this.voteLabel1.setText("");
+        this.imageView1.setImage(null);
+
+        this.movieLabel2.setText("");
+        this.genreLabel2.setText("");
+        this.voteLabel2.setText("");
+        this.imageView2.setImage(null);
+
+        this.movieLabel3.setText("");
+        this.genreLabel3.setText("");
+        this.voteLabel3.setText("");
+        this.imageView3.setImage(null);
+
+        this.movieLabel4.setText("");
+        this.genreLabel4.setText("");
+        this.voteLabel4.setText("");
+        this.imageView4.setImage(null);
+
+        // hide all the button
+        this.moreButton1.setVisible(false);
+        this.moreButton2.setVisible(false);
+        this.moreButton3.setVisible(false);
+        this.moreButton4.setVisible(false);
     }
 
     private String getGenreNameFromId(List<Genre> list, Integer genreId) {

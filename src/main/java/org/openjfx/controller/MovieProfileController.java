@@ -50,7 +50,7 @@ public class MovieProfileController {
 
     @FXML
     public void initialize() {
-        if (App.searchMovies.size() != 0) {
+        if (App.searchMovies != null) {
             this.movie = App.searchMovies.get(App.indexOfChosenSearchMovie);
         } else {
             this.movie = App.recommendedMovies.get(App.indexOfChosenMovie);
