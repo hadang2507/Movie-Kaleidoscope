@@ -276,10 +276,13 @@ public class DashboardController{
                 }
             }
         }
+        
         this.genreLabel1.setText(genres1);
-        this.voteLabel1.setText(App.recommendedMovies.get(count).getVote_average());
+        this.voteLabel1.setText(App.recommendedMovies.get(count).getVote_average() + "/10");
         Image image1 = new Image(App.recommendedMovies.get(count).getPoster_path());
         this.imageView1.setImage(image1);
+        this.moreButton1.setVisible(true);
+
 
         if (App.recommendedMovies.size() % 2 == 0) {
             this.movieLabel2.setText(App.recommendedMovies.get(count + 1).getTitle());
@@ -296,9 +299,11 @@ public class DashboardController{
             }
 
             this.genreLabel2.setText(genres2);
-            this.voteLabel2.setText(App.recommendedMovies.get(count + 1).getVote_average());
+            this.voteLabel2.setText(App.recommendedMovies.get(count + 1).getVote_average() + "/10");
             Image image2 = new Image(App.recommendedMovies.get(count + 1).getPoster_path());
             this.imageView2.setImage(image2);
+            this.moreButton2.setVisible(true);
+
         }
 
         if (App.recommendedMovies.size() == 3 || App.recommendedMovies.size() >= 3) {
@@ -316,9 +321,11 @@ public class DashboardController{
                 }
             }
             this.genreLabel3.setText(genres3);
-            this.voteLabel3.setText(App.recommendedMovies.get(count + 2).getVote_average());
+            this.voteLabel3.setText(App.recommendedMovies.get(count + 2).getVote_average() + "/10");
             Image image3 = new Image(App.recommendedMovies.get(count + 2).getPoster_path());
             this.imageView3.setImage(image3);
+            this.moreButton3.setVisible(true);
+
         }
 
         if (App.recommendedMovies.size() == 4 || App.recommendedMovies.size() >= 4) {
@@ -336,9 +343,11 @@ public class DashboardController{
             }
 
             this.genreLabel4.setText(genres4);
-            this.voteLabel4.setText(App.recommendedMovies.get(count + 3).getVote_average());
+            this.voteLabel4.setText(App.recommendedMovies.get(count + 3).getVote_average() + "/10");
             Image image4 = new Image(App.recommendedMovies.get(count + 3).getPoster_path());
             this.imageView4.setImage(image4);
+            this.moreButton4.setVisible(true);
+
         }
     }
 

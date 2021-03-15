@@ -67,7 +67,7 @@ public class MovieProfileController {
         Image image = new Image(this.movie.getPoster_path());
         this.movieImage.setImage(image);
         this.genreLabel.setText(genre);
-        this.averageRateLabel.setText("Average Rate: " + this.movie.getVote_average());
+        this.averageRateLabel.setText("Average Rate: " + this.movie.getVote_average() + "/10");
         this.descriptionLabel.setText(this.movie.getOverview());
         this.descriptionLabel.setMaxWidth(520);
         this.descriptionLabel.setWrapText(true);
