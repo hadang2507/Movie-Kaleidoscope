@@ -13,6 +13,9 @@ import org.openjfx.management.APIRequest;
 
 import java.io.IOException;
 
+/*
+THIS CLASS IS FOR SEARCHING MOVIES BY THEIR TITLE, GENRES, ACTORS/ACTRESSES,...
+ */
 public class SearchController {
 
     @FXML

@@ -1,5 +1,8 @@
 package org.openjfx.model;
 
+/*
+GENRE DETAIL
+ */
 public class Genre {
     private String id;
     private String name;

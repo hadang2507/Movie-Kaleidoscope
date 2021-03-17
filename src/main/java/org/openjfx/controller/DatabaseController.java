@@ -10,8 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/*
+THIS CLASS IS FOR THE DATA RETRIEVING FROM OUR OWN DATABASE SQLTE
+ */
 public class DatabaseController {
 
+    /*
+    CONNECT TO DATABASE
+     */
     private static Connection connect() {
         String path = "jdbc:sqlite:src/main/java/org/openjfx/model/data.db";
         Connection conn = null;
@@ -24,6 +30,9 @@ public class DatabaseController {
         return conn;
     }
 
+    /*
+    INSERT THE USER'S PREFERABLE TYPES OF GENRES FOR PERSONALIZATION INTO TABLE 'USERS_GENRE'
+     */
     public void insertGenreIDToTableUSERS_GENRE(List<Genre> genres) {
         Connection conn = connect();
         // TODO
@@ -43,6 +52,9 @@ public class DatabaseController {
         }
     }
 
+    /*
+    INSERT INTO TABLE 'USERS_WISHLISTS' THE MOVIES WHICH USER WISHES TO WATCH
+     */
     public void insertMovieToTableUSERS_WISHLISTS(String movie_id) {
         String query = "INSERT INTO USERS_WISHLISTS('username', 'movie_id') VALUES (?, ?)";
         Connection conn = this.connect();
@@ -57,6 +69,9 @@ public class DatabaseController {
         }
     }
 
+    /*
+    INSERT USER'S PERSONAL INFORMATION INTO TABLE 'USERS': USERNAME, NAME, PASSWORD
+     */
     public void insertUserToTableUSERS(User user) {
         //
         String query = "INSERT INTO USERS('username','password','firstname', 'lastname') VALUES(?, ?, ?, ?)";
@@ -73,6 +88,9 @@ public class DatabaseController {
         }
     }
 
+    /*
+    INSERT USER'S PERSONAL MOVIE RATINGS INTO TABLE 'USERS_MOVIE'
+     */
     public void insertRatedMovieFromTableUSERS_MOVIE(String movie_id, String choice) {
         String query = "INSERT INTO USERS_MOVIE('username', 'movie_id', 'rated') VALUES (?, ?, ?)";
         Connection conn = this.connect();
@@ -88,6 +106,9 @@ public class DatabaseController {
         }
     }
 
+    /*
+    RETRIEVING USER'S PERSONAL DATA TO DISPLAY ON THE APP
+     */
     public User getUserInfoFromTableUSERS(String username){
         String query = "SELECT * FROM USERS where username = ?";
         Connection conn = this.connect();
@@ -104,6 +125,9 @@ public class DatabaseController {
         return user;
     }
 
+    /*
+    RETRIEVING USER'S PASSWORD FOR THE LOG IN PROCESS
+     */
     public boolean getPasswordFromTableUSERS(User user){
         String query = "SELECT password FROM USERS where username = ?";
         Connection conn = this.connect();
@@ -121,6 +145,10 @@ public class DatabaseController {
         return false;
     }
 
+    /*
+    GET THE MOVIE IDS THAT USER HAS CHOSEN WHEN REGISTER
+    THOSE ARE FOR RETRIEVING THE MOVIES WITH THE SIMILAR TYPES THAT USER HAS INITIALLY CHOSEN
+     */
     public List<Genre> getChosenGenreIDFromTableUSERS_GENRE(String username) {
         List<Genre> results = new ArrayList<>();
 
@@ -141,6 +169,10 @@ public class DatabaseController {
         return results;
     }
 
+    /*
+    RETRIEVING THE MOVIES IN USER'S WISH LIST TO DISPLAY OUR RECOMMENDATIONS
+    ON THE TAB 'RECOMMENDED MOVIES' IN THE APP
+     */
     public List<String> getMovieIDFromTableUSERS_WISHLISTS() {
         List<String> movies_ids = new ArrayList<>();
 
@@ -163,6 +195,9 @@ public class DatabaseController {
         return movies_ids;
     }
 
+    /*
+    RETRIEVING THE RANDOM MOVIES PICK FROM USER'S RATED MOVIES
+     */
     public String getRandomRatedMovieIdFromTableUSERS_MOVIE() {
         String query = "SELECT movie_id from USERS_MOVIE WHERE username = ?";
         Connection conn = this.connect();
@@ -186,6 +221,9 @@ public class DatabaseController {
         return movieIds.get(new Random().nextInt(movieIds.size()));
     }
 
+    /*
+    GET THE MOVIES IN THE TABLE 'USERS_MOVIE'
+     */
     public List<String> getMovieIDsFromUSERS_MOVIE() {
         List<String> movies_ids = new ArrayList<>();
 
@@ -207,6 +245,9 @@ public class DatabaseController {
         return movies_ids;
     }
 
+    /*
+    UPDATE USER PROFILE FUNCTION
+     */
     public void updateProfileFromTableUSERS(User user) {
         String query = "UPDATE USERS SET password = ?, firstname = ?, lastname = ? WHERE username = ?";
         Connection conn = this.connect();
@@ -224,6 +265,9 @@ public class DatabaseController {
         }
     }
 
+    /*
+    UPDATE THE USER'S RATING WHEN THEY WANT TO RATE A MOVIE MORE THAN 1 TIME
+     */
     public void updateRatedMovieFromTableUSERS_Movie(String movie_id, String choice) {
         String query = "UPDATE USERS_MOVIE SET rated = ? WHERE username = ? AND movie_id = ?";
         Connection conn = this.connect();
@@ -240,6 +284,9 @@ public class DatabaseController {
         }
     }
 
+    /*
+    CHECK IF USER ACCOUNT EXISTS IN DATABASE
+     */
     public boolean checkIfExistAccountFromTableUSERS(User user) {
         String query = "SELECT * FROM USERS where username = ?";
         Connection conn = this.connect();
@@ -257,6 +304,9 @@ public class DatabaseController {
         return false;
     }
 
+    /*
+    CHECK IF THERE EXISTS ANY MOVIES THAT USER HAS PREVIOUSLY ADD TO THEIR WISH LIST
+     */
     public boolean checkIfMovieIDIsAlreadyAddedFromTableUSERS_WISHLISTS(String movie_id) {
         String query = "SELECT * FROM USERS_WISHLISTS where username = ? AND movie_id = ?";
         Connection conn = this.connect();
@@ -275,6 +325,9 @@ public class DatabaseController {
         return false;
     }
 
+    /*
+    CHECK IF THERE EXISTS ANY MOVIES THAT USER HAS PREVIOUSLY RATED
+     */
     public boolean checkIfMovieIsRatedFromTableUSERS_MOVIE(String movie_id) {
         String query = "SELECT * FROM USERS_MOVIE where username = ? AND movie_id = ?";
         Connection conn = this.connect();
@@ -294,6 +347,9 @@ public class DatabaseController {
         return false;
     }
 
+    /*
+    CHECK IF USER HAS RATED ANY MOVIE BEFORE
+     */
     public boolean checkIfUserHasRatedAnyMovie() {
         String query = "SELECT * FROM USERS_MOVIE WHERE username = ?";
         Connection conn = this.connect();

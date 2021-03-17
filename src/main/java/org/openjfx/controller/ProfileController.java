@@ -10,6 +10,10 @@ import org.openjfx.model.User;
 
 import java.io.IOException;
 
+/*
+THIS CLASS DISPLAY THE USER'S PROFILE PAGE
+THIS ALLOWS USER TO CHANGE THEIR PERSONAL INFROMATION SUCH AS PASSWORD
+ */
 public class ProfileController {
     private User user;
 

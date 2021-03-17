@@ -15,6 +15,11 @@ import org.openjfx.model.Movie;
 import java.io.IOException;
 import java.util.List;
 
+/*
+A SPECIFIED MOVIE PROFILE PAGE
+DETAILS SHOWN: MOVIE TITLE, DIRECTORS, GENRES, AVERAGE RATING, BRIEF SUMMARY, RATING BOX, 'ADD TO WISH LIST' BUTTON
+
+ */
 public class MovieProfileController {
     private Movie movie;
 

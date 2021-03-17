@@ -18,7 +18,9 @@ import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+THIS CLASS IS FOR ANYTHING CONCERNING THE DASHBOARD DISPLAY, EXCLUDED THE MOVIE PROFILE PAGE
+ */
 public class DashboardController{
     private int count;
 
@@ -115,6 +117,10 @@ public class DashboardController{
     @FXML
     private Button previousButton;
 
+    /*
+    FUNCTION TO INITIALIZE USER'S DATA
+    GET PERSONALIZED MOVIES FROM USER'S DATA: WISH LIST, RATED MOVIES
+     */
     @FXML
     public void initialize() throws IOException {
         this.count = 0;
@@ -140,7 +146,9 @@ public class DashboardController{
 
         this.setMovieBriefDetailsOnDashBoard();
     }
-
+    /*
+    LOG OUT FUNCTION
+     */
     @FXML
     void logOutOnMouseClicked(MouseEvent event) throws IOException{
         App.resetGlobalVariables();
@@ -151,7 +159,10 @@ public class DashboardController{
     void profileSettingOnMouseClicked(MouseEvent event) throws IOException{
         App.setRoot("profile");
     }
-
+    /*
+    DISPLAY MOVIES FROM USER'S RATED LIST
+    IF USER HAS NOT RATED ANY MOVIE, A WARNING TEXT WILL BE POP UP
+     */
     @FXML
     void ratedMoviesOnMouseClicked(MouseEvent event) {
 //        DatabaseController dbController = new DatabaseController();
@@ -191,6 +202,9 @@ public class DashboardController{
         App.setRoot("search");
     }
 
+    /*
+    GET THE CURRENTLY POPULR MOVIES AROUND THE WORLD FROM THE MOVIE DB AND DISPLAY THEM ON THE SCREEN
+     */
     @FXML
     void topRatedOnMouseClicked(MouseEvent event) {
         this.count = 0;
@@ -205,6 +219,9 @@ public class DashboardController{
         App.setRoot("profile");
     }
 
+    /*
+    DISPLAY THE MOVIES WHICH USER ADDED TO THEIR WISH LIST
+     */
     @FXML
     void wishListOnMouseClicked(MouseEvent event) {
         DatabaseController dbController = new DatabaseController();
@@ -261,7 +278,11 @@ public class DashboardController{
             this.setMovieBriefDetailsOnDashBoard();
         }
     }
-
+    /*
+    DISPLAY MOVIES IN SMALL SIZE ON THE DASHBOARD
+    EACH PAGE CONTAINS 4 MOVIES
+    ONLY BRIEF MOVIE DETAILS: TITLE, GENRES, THE AVERAGE RATING FROM THE AUDIENCE
+     */
     private void setMovieBriefDetailsOnDashBoard() {
         List<Genre> genres = new APIRequest().getGenreAndId();
         this.movieLabel1.setText(App.recommendedMovies.get(count).getTitle());
@@ -276,7 +297,7 @@ public class DashboardController{
                 }
             }
         }
-        
+
         this.genreLabel1.setText(genres1);
         this.voteLabel1.setText(App.recommendedMovies.get(count).getVote_average() + "/10");
         Image image1 = new Image(App.recommendedMovies.get(count).getPoster_path());
@@ -350,7 +371,9 @@ public class DashboardController{
 
         }
     }
-
+    /*
+    FUNCTION TO SET THE EMPTY POSITIONS ON THE DASHBOARD IN WHICH NO MOVIE IS DISPLAYED
+     */
     private void setEmptyMovieBriefDetailsOnDashBoard() {
         this.movieLabel1.setText("");
         this.genreLabel1.setText("");
@@ -379,6 +402,9 @@ public class DashboardController{
         this.moreButton4.setVisible(false);
     }
 
+    /*
+    RETURN THE MOVIE GENRES NAME FROM THE ID RETRIEVED FROM THE MOVIE DB
+     */
     private String getGenreNameFromId(List<Genre> list, Integer genreId) {
         for (Genre each: list) {
             if (each.getId().equals(String.valueOf(genreId))) {

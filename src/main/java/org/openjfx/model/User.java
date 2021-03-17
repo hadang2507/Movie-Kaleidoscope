@@ -1,5 +1,8 @@
 package org.openjfx.model;
 
+/*
+USER DETAIL
+ */
 public class User {
 
     private String username;

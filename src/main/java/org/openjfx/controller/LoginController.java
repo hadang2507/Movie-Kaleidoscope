@@ -10,6 +10,10 @@ import org.openjfx.model.User;
 
 import java.io.IOException;
 
+/*
+THIS CLASS IS FOR LOG IN PROCEDURE
+REQUIRED TEXT FIELDS INCLUDING: USERNAME, PASSWORD
+ */
 public class LoginController {
 
     @FXML
