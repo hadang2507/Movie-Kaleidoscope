@@ -54,7 +54,12 @@ public class MovieProfileController {
     private Button addToWishListButton;
 
     @FXML
+    private Label notificationLabel;
+
+    @FXML
     public void initialize() {
+        this.notificationLabel.setText("");
+
         if (App.searchMovies != null) {
             this.movie = App.searchMovies.get(App.indexOfChosenSearchMovie);
         } else {
@@ -105,8 +110,10 @@ public class MovieProfileController {
 
         if (!dbController.checkIfMovieIsRatedFromTableUSERS_MOVIE(movie_id)) {
             dbController.insertRatedMovieFromTableUSERS_MOVIE(movie_id, choice);
+            this.notificationLabel.setText("Rate movie successfully !");
         } else {
             dbController.updateRatedMovieFromTableUSERS_Movie(movie_id, choice);
+            this.notificationLabel.setText("Update movie's rating successfully !");
         }
     }
 
@@ -117,6 +124,7 @@ public class MovieProfileController {
 
         if (!dbController.checkIfMovieIDIsAlreadyAddedFromTableUSERS_WISHLISTS(movie_id)) {
             dbController.insertMovieToTableUSERS_WISHLISTS(movie_id);
+            this.notificationLabel.setText("Add movie to wishlist successfully !");
         }
     }
 

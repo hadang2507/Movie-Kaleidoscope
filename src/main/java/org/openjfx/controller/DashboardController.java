@@ -7,19 +7,17 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 import org.openjfx.App;
 import org.openjfx.management.APIRequest;
 import org.openjfx.model.Genre;
 import org.openjfx.model.Movie;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
-/*
-THIS CLASS IS FOR ANYTHING CONCERNING THE DASHBOARD DISPLAY, EXCLUDED THE MOVIE PROFILE PAGE
+/**
+ * THIS CLASS IS FOR ANYTHING CONCERNING THE DASHBOARD DISPLAY, EXCLUDED THE MOVIE PROFILE PAGE
+ * @author Dang Ngan Ha, Ngo Quoc Thai
  */
 public class DashboardController{
     private int count;
@@ -117,19 +115,21 @@ public class DashboardController{
     @FXML
     private Button previousButton;
 
-    /*
-    FUNCTION TO INITIALIZE USER'S DATA
-    GET PERSONALIZED MOVIES FROM USER'S DATA: WISH LIST, RATED MOVIES
+    /**
+     FUNCTION TO INITIALIZE USER'S DATA
+     GET PERSONALIZED MOVIES FROM USER'S DATA: WISH LIST, RATED MOVIES
      */
     @FXML
     public void initialize() throws IOException {
         this.count = 0;
         App.indexOfChosenMovie = 0;
+
         this.usernameLabel.setText(App.username);
+        this.headingLabel.setText("Homepage");
+
         DatabaseController dbController = new DatabaseController();
         APIRequest apiRequest = new APIRequest();
 
-        // TODO
         // check if user has any rated movies ?
         if (dbController.checkIfUserHasRatedAnyMovie()) {
             String movieId = dbController.getRandomRatedMovieIdFromTableUSERS_MOVIE();
@@ -138,7 +138,6 @@ public class DashboardController{
 
         // if user has not rated any movies and from initialization layout
         if (App.recommendedMovies == null) {
-
             if (!dbController.getChosenGenreIDFromTableUSERS_GENRE(App.username).isEmpty()) {
                 App.recommendedMovies = apiRequest.getMoviesFromGenres();
             }
@@ -146,8 +145,8 @@ public class DashboardController{
 
         this.setMovieBriefDetailsOnDashBoard();
     }
-    /*
-    LOG OUT FUNCTION
+    /**
+     * LOG OUT FUNCTION
      */
     @FXML
     void logOutOnMouseClicked(MouseEvent event) throws IOException{
@@ -155,22 +154,20 @@ public class DashboardController{
         App.setRoot("login");
     }
 
+    /**
+     * MOVE TO USER'S PROFILE PAGE
+     */
     @FXML
     void profileSettingOnMouseClicked(MouseEvent event) throws IOException{
         App.setRoot("profile");
     }
-    /*
-    DISPLAY MOVIES FROM USER'S RATED LIST
-    IF USER HAS NOT RATED ANY MOVIE, A WARNING TEXT WILL BE POP UP
+
+    /**
+     * DISPLAY MOVIES FROM USER'S RATED LIST
+     * IF USER HAS NOT RATED ANY MOVIE, A WARNING TEXT WILL BE POP UP
      */
     @FXML
     void ratedMoviesOnMouseClicked(MouseEvent event) {
-//        DatabaseController dbController = new DatabaseController();
-//        APIRequest apiRequest = new APIRequest();
-//        this.count = 0;
-//        App.indexOfChosenMovie = 0;
-//
-//        this.setMovieBriefDetailsOnDashBoard();
         DatabaseController dbController = new DatabaseController();
         List<String> movie_ids = dbController.getMovieIDsFromUSERS_MOVIE();
         List<Movie> moviesList = new ArrayList<>();
@@ -189,21 +186,18 @@ public class DashboardController{
             App.indexOfChosenMovie = 0;
             this.setMovieBriefDetailsOnDashBoard();
         }
-
     }
 
-    @FXML
-    void recommendedMoviesOnMouseClicked(MouseEvent event) {
-
-    }
-
+    /**
+     * DIRECT TO SEARCH PAGE
+     */
     @FXML
     void searchOnMouseClicked(MouseEvent event) throws IOException{
         App.setRoot("search");
     }
 
-    /*
-    GET THE CURRENTLY POPULR MOVIES AROUND THE WORLD FROM THE MOVIE DB AND DISPLAY THEM ON THE SCREEN
+    /**
+     * GET THE CURRENTLY POPULAR MOVIES AROUND THE WORLD FROM THE MOVIE DB AND DISPLAY THEM ON THE SCREEN
      */
     @FXML
     void topRatedOnMouseClicked(MouseEvent event) {
@@ -214,13 +208,16 @@ public class DashboardController{
         this.setMovieBriefDetailsOnDashBoard();
     }
 
+    /**
+     * DIRECT TO USER'S PROFILE PAGE
+     */
     @FXML
     void usernameOnMouseClicked(MouseEvent event) throws IOException{
         App.setRoot("profile");
     }
 
-    /*
-    DISPLAY THE MOVIES WHICH USER ADDED TO THEIR WISH LIST
+    /**
+     * DISPLAY THE MOVIES WHICH USER ADDED TO THEIR WISH LIST
      */
     @FXML
     void wishListOnMouseClicked(MouseEvent event) {

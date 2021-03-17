@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.openjfx.App;
 import org.openjfx.model.User;
@@ -20,9 +21,6 @@ public class LoginController {
     private TextField usernameTextField;
 
     @FXML
-    private TextField passwordTextField;
-
-    @FXML
     private Button loginButton;
 
     @FXML
@@ -32,7 +30,7 @@ public class LoginController {
     private Label loginMessage;
 
     @FXML
-    private Button forgetPasswordButton;
+    private PasswordField passwordField;
 
     public void initialize() {
         this.loginMessage.setText("");
@@ -50,7 +48,7 @@ public class LoginController {
         // 3. check if account exist in database, if not tell user to register
         // additional: forgot password
         String username = this.usernameTextField.getText();
-        String pass = this.passwordTextField.getText();
+        String pass = this.passwordField.getText();
 
         if (username.equals("") || pass.equals("")){
             this.loginMessage.setText("You forget to fill username/password");
@@ -82,6 +80,6 @@ public class LoginController {
 
     public void emptyTextField() {
         this.usernameTextField.setText("");
-        this.passwordTextField.setText("");
+        this.passwordField.setText("");
     }
 }
