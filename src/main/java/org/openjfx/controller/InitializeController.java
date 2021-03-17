@@ -14,6 +14,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/*
+THIS CLASS IS FOR THE INITIALIZATION
+LIST ALL THE GENRES AND LET USER CHOOSES WHEN THEY FIRST REGISTER.
+USER MUST CHOOSE AT LEAST 3 GENRES FOR PERSONALIZATION
+ */
 public class InitializeController {
 
     private List<Genre> genres;

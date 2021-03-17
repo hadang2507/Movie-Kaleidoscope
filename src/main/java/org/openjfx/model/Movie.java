@@ -2,6 +2,9 @@ package org.openjfx.model;
 
 import java.util.List;
 
+/*
+MOVIE DETAIL
+ */
 public class Movie {
     private String id;
     private String budget;

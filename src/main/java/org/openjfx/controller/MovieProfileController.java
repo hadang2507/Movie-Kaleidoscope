@@ -8,10 +8,18 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import org.openjfx.App;
+import org.openjfx.management.APIRequest;
+import org.openjfx.model.Genre;
 import org.openjfx.model.Movie;
 
 import java.io.IOException;
+import java.util.List;
 
+/*
+A SPECIFIED MOVIE PROFILE PAGE
+DETAILS SHOWN: MOVIE TITLE, DIRECTORS, GENRES, AVERAGE RATING, BRIEF SUMMARY, RATING BOX, 'ADD TO WISH LIST' BUTTON
+
+ */
 public class MovieProfileController {
     private Movie movie;
 
@@ -46,19 +54,30 @@ public class MovieProfileController {
     private Button addToWishListButton;
 
     @FXML
-    public void initialize() {
-        DashboardController dashBoard = new DashboardController();
-        this.movie = App.recommendedMovies.get(App.indexOfChosenMovie);
+    private Label notificationLabel;
 
+    @FXML
+    public void initialize() {
+        this.notificationLabel.setText("");
+
+        if (App.searchMovies != null) {
+            this.movie = App.searchMovies.get(App.indexOfChosenSearchMovie);
+        } else {
+            this.movie = App.recommendedMovies.get(App.indexOfChosenMovie);
+        }
+
+        List<Genre> genres = new APIRequest().getGenreAndId();
         this.nameLabel.setText(this.movie.getTitle());
         String genre = "";
-        for (Integer each: this.movie.getGenres()) {
-            genre += each + " / ";
+        if (this.movie.getGenres() != null) {
+            for (Integer each: this.movie.getGenres()) {
+                genre += getGenreNameFromId(genres, each) + " / ";
+            }
         }
         Image image = new Image(this.movie.getPoster_path());
         this.movieImage.setImage(image);
         this.genreLabel.setText(genre);
-        this.averageRateLabel.setText("Average Rate: " + this.movie.getVote_average());
+        this.averageRateLabel.setText("Average Rate: " + this.movie.getVote_average() + "/10");
         this.descriptionLabel.setText(this.movie.getOverview());
         this.descriptionLabel.setMaxWidth(520);
         this.descriptionLabel.setWrapText(true);
@@ -91,8 +110,10 @@ public class MovieProfileController {
 
         if (!dbController.checkIfMovieIsRatedFromTableUSERS_MOVIE(movie_id)) {
             dbController.insertRatedMovieFromTableUSERS_MOVIE(movie_id, choice);
+            this.notificationLabel.setText("Rate movie successfully !");
         } else {
             dbController.updateRatedMovieFromTableUSERS_Movie(movie_id, choice);
+            this.notificationLabel.setText("Update movie's rating successfully !");
         }
     }
 
@@ -103,7 +124,17 @@ public class MovieProfileController {
 
         if (!dbController.checkIfMovieIDIsAlreadyAddedFromTableUSERS_WISHLISTS(movie_id)) {
             dbController.insertMovieToTableUSERS_WISHLISTS(movie_id);
+            this.notificationLabel.setText("Add movie to wishlist successfully !");
         }
+    }
+
+    private String getGenreNameFromId(List<Genre> list, Integer genreId) {
+        for (Genre each: list) {
+            if (each.getId().equals(String.valueOf(genreId))) {
+                return each.getName();
+            }
+        }
+        return null;
     }
 
 }

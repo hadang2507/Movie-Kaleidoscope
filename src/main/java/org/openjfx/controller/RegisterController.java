@@ -12,6 +12,9 @@ import org.openjfx.model.User;
 import java.io.IOException;
 import java.util.Locale;
 
+/*
+THIS CLASS IS FOR REGISTERING NEW ACCOUNT
+ */
 public class RegisterController {
 
     @FXML

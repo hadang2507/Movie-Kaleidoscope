@@ -1,5 +1,8 @@
 package org.openjfx.model;
 
+/*
+PRODUCTION COMPANY DETAIL
+ */
 public class ProductionCompany {
     private String id;
     private String logo_path;

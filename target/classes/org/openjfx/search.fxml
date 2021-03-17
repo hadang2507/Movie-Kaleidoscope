@@ -7,7 +7,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: #032541;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controller.SearchController">
    <children>
       <Button fx:id="searchButton" layoutX="345.0" layoutY="27.0" mnemonicParsing="false" onAction="#searchButtonOnAction" style="-fx-background-color: #08B4E1;" text="Search" textFill="WHITE">
@@ -15,29 +14,25 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextField layoutX="176.0" layoutY="27.0" fx:id="searchTextField" onAction="#searchButtonOnAction"/>
-      <AnchorPane layoutX="14.0" layoutY="122.0" prefHeight="135.0" prefWidth="130.0">
+      <TextField fx:id="searchTextField" layoutX="176.0" layoutY="27.0" onAction="#searchButtonOnAction" />
+      <AnchorPane layoutX="14.0" layoutY="122.0" onMouseClicked="#movie1OnMouseClicked" prefHeight="135.0" prefWidth="130.0">
          <children>
-            <ImageView fitHeight="90.0" fitWidth="110.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="102.0" prefHeight="26.0" prefWidth="130.0" text="Movie #1" textFill="WHITE" />
+            <ImageView fx:id="movie1Image" fitHeight="90.0" fitWidth="110.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="movie1Name" alignment="CENTER" contentDisplay="CENTER" layoutY="102.0" prefHeight="26.0" prefWidth="130.0" text="Movie #1" textFill="WHITE" />
          </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </AnchorPane>
       <AnchorPane layoutX="185.0" layoutY="122.0" prefHeight="135.0" prefWidth="130.0">
          <children>
-            <ImageView fitHeight="90.0" fitWidth="110.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="101.0" prefHeight="26.0" prefWidth="130.0" text="Movie #2" textFill="WHITE" />
+            <ImageView fx:id="movie2Image" fitHeight="90.0" fitWidth="110.0" layoutX="10.0" onMouseClicked="#movie2OnMouseClicked" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="movie2Name" alignment="CENTER" contentDisplay="CENTER" layoutY="101.0" prefHeight="26.0" prefWidth="130.0" text="Movie #2" textFill="WHITE" />
          </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </AnchorPane>
-      <Button fx:id="nextButton" layoutX="258.0" layoutY="65.0" mnemonicParsing="false" onAction="#nextButtonOnAction" style="-fx-background-color: #08B4E1;" text="Next" textFill="WHITE">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button fx:id="prevButton" layoutX="204.0" layoutY="65.0" mnemonicParsing="false" onAction="#prevButtonOnAction" style="-fx-background-color: #08B4E1;" text="Prev" textFill="WHITE">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
       <Button fx:id="backToDashboardButton" layoutX="32.0" layoutY="27.0" mnemonicParsing="false" onAction="#backToDashboardButtonOnAction" style="-fx-background-color: #08B4E1;" text="Back To DashBoard" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -45,27 +40,39 @@
       </Button>
       <AnchorPane layoutX="351.0" layoutY="122.0" prefHeight="135.0" prefWidth="130.0">
          <children>
-            <ImageView fitHeight="90.0" fitWidth="110.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="102.0" prefHeight="26.0" prefWidth="130.0" text="Movie #3" textFill="WHITE" />
+            <ImageView fx:id="movie3Image" fitHeight="90.0" fitWidth="110.0" layoutX="10.0" onMouseClicked="#movie3OnMouseClicked" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="movie3Name" alignment="CENTER" contentDisplay="CENTER" layoutY="102.0" prefHeight="26.0" prefWidth="130.0" text="Movie #3" textFill="WHITE" />
          </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </AnchorPane>
       <AnchorPane layoutX="14.0" layoutY="300.0" prefHeight="135.0" prefWidth="130.0">
          <children>
-            <ImageView fitHeight="90.0" fitWidth="110.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="102.0" prefHeight="26.0" prefWidth="130.0" text="Movie #4" textFill="WHITE" />
+            <ImageView fx:id="movie4Image" fitHeight="90.0" fitWidth="110.0" layoutX="10.0" onMouseClicked="#movie4OnMouseClicked" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="movie4Name" alignment="CENTER" contentDisplay="CENTER" layoutY="102.0" prefHeight="26.0" prefWidth="130.0" text="Movie #4" textFill="WHITE" />
          </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </AnchorPane>
       <AnchorPane layoutX="178.0" layoutY="300.0" prefHeight="135.0" prefWidth="130.0">
          <children>
-            <ImageView fitHeight="90.0" fitWidth="110.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="102.0" prefHeight="26.0" prefWidth="130.0" text="Movie #5" textFill="WHITE" />
+            <ImageView fx:id="movie5Image" fitHeight="90.0" fitWidth="110.0" layoutX="10.0" onMouseClicked="#movie5OnMouseClicked" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="movie5Name" alignment="CENTER" contentDisplay="CENTER" layoutY="102.0" prefHeight="26.0" prefWidth="130.0" text="Movie #5" textFill="WHITE" />
          </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </AnchorPane>
       <AnchorPane layoutX="351.0" layoutY="300.0" prefHeight="135.0" prefWidth="130.0">
          <children>
-            <ImageView fitHeight="90.0" fitWidth="110.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="102.0" prefHeight="26.0" prefWidth="130.0" text="Movie #6" textFill="WHITE" />
+            <ImageView fx:id="movie6Image" fitHeight="90.0" fitWidth="110.0" layoutX="10.0" onMouseClicked="#movie6OnMouseClicked" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="movie6Name" alignment="CENTER" contentDisplay="CENTER" layoutY="102.0" prefHeight="26.0" prefWidth="130.0" text="Movie #6" textFill="WHITE" />
          </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </AnchorPane>
    </children>
 </AnchorPane>
