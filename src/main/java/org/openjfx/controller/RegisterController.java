@@ -43,7 +43,7 @@ public class RegisterController {
 
     @FXML
     public void initialize() {
-        this.registerMessageLabel.setText("");
+        this.registerMessageLabel.setText("6-20 letters and numbers with >= 1 uppercase and special char");
     }
 
     @FXML

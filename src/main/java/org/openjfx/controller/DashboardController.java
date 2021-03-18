@@ -162,6 +162,11 @@ public class DashboardController{
         App.setRoot("profile");
     }
 
+    @FXML
+    void recommendedMoviesOnMouseClicked(MouseEvent event) {
+
+    }
+
     /**
      * DISPLAY MOVIES FROM USER'S RATED LIST
      * IF USER HAS NOT RATED ANY MOVIE, A WARNING TEXT WILL BE POP UP
