@@ -12,8 +12,9 @@ import org.openjfx.model.User;
 import java.io.IOException;
 import java.util.Locale;
 
-/*
-THIS CLASS IS FOR REGISTERING NEW ACCOUNT
+/**
+ * THIS CLASS IS FOR REGISTERING NEW ACCOUNT
+ * @author Nguyen Phan Yen Ngan
  */
 public class RegisterController {
 
@@ -51,6 +52,11 @@ public class RegisterController {
         App.setRoot("login");
     }
 
+    /**
+     * A FUNCTION TO REGISTER NEW ACCOUNT
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void registerButtonOnMouseClicked(MouseEvent event) throws IOException{
         // TODO
@@ -72,6 +78,7 @@ public class RegisterController {
             return;
         }
 
+        // using regular expression to check the password string format.
         boolean lengthRule = pass.length() >= 6 && pass.length() < 20;
         boolean upperRule = !pass.equals(pass.toLowerCase());
         boolean charRule = pass.matches("(.*)[a-z](.*)");
@@ -103,6 +110,9 @@ public class RegisterController {
         }
     }
 
+    /**
+     * EMPTY THE ALL THE TEXT FIELDS
+     */
     public void emptyTextField() {
         this.userNameTextField.setText("");
         this.passwordTextField.setText("");

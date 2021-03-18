@@ -10,14 +10,13 @@ import org.openjfx.model.Genre;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-/*
-THIS CLASS IS FOR THE INITIALIZATION
-LIST ALL THE GENRES AND LET USER CHOOSES WHEN THEY FIRST REGISTER.
-USER MUST CHOOSE AT LEAST 3 GENRES FOR PERSONALIZATION
+/**
+ * THIS CLASS IS FOR THE INITIALIZATION
+ * LIST ALL THE GENRES AND LET USER CHOOSES WHEN THEY FIRST REGISTER.
+ * USER MUST CHOOSE AT LEAST 3 GENRES FOR PERSONALIZATION
+ * @author Ngo Quoc Thai
  */
 public class InitializeController {
 
@@ -87,6 +86,9 @@ public class InitializeController {
     @FXML
     private Label youChooseLabel;
 
+    /**
+     * INITIALIZE PAGE WHERE USER CHOOSE HIS/HER PREFERRED GENRES
+     */
     public void initialize() {
         this.userChoices = new ArrayList<>();
 
@@ -153,22 +155,6 @@ public class InitializeController {
     }
 
     @FXML
-    void finishButtonOnAction(ActionEvent event) throws IOException {
-        String username = App.username;
-
-        if (this.returnChosenGenres(this.userChoices).size() < 3) {
-            this.youChooseLabel.setText("You must choose at least 3 genres");
-            return;
-        }
-
-        DatabaseController dbController = new DatabaseController();
-        dbController.insertGenreIDToTableUSERS_GENRE(this.returnChosenGenres(this.userChoices));
-
-        // move to dashboard
-        App.setRoot("dashboard");
-    }
-
-    @FXML
     void historyButtonOnAction(ActionEvent event) {
         this.addGenre(this.historyButton.getText());
         this.returnChosenChoices();
@@ -228,7 +214,28 @@ public class InitializeController {
         this.returnChosenChoices();
     }
 
+    /**
+     * GET CHOSEN GENRES FROM USER AND ADD TO DATABASE FOR INITIALIZING DASHBOARD PAGE
+     */
+    @FXML
+    void finishButtonOnAction(ActionEvent event) throws IOException {
+        String username = App.username;
 
+        if (this.returnChosenGenres(this.userChoices).size() < 3) {
+            this.youChooseLabel.setText("You must choose at least 3 genres");
+            return;
+        }
+
+        DatabaseController dbController = new DatabaseController();
+        dbController.insertGenreIDToTableUSERS_GENRE(this.returnChosenGenres(this.userChoices));
+
+        // move to dashboard
+        App.setRoot("dashboard");
+    }
+
+    /**
+     * ADD CHOSEN GENRE TO TEMPORARY GENRE LIST
+     */
     private void addGenre(String genre) {
         for (String each: this.userChoices) {
             if (each.equals(genre)) {
@@ -239,6 +246,9 @@ public class InitializeController {
         this.userChoices.add(genre);
     }
 
+    /**
+     * DISPLAY CHOSEN GENRES ON THE PAGE
+     */
     private void returnChosenChoices() {
         String choices = "";
         for (String each: this.userChoices) {
@@ -247,6 +257,9 @@ public class InitializeController {
         this.youChooseLabel.setText("You choose: " + choices);
     }
 
+    /**
+     * A FUNCTION TO RETURN A LIST OF CHOSEN GENRES
+     */
     private List<Genre> returnChosenGenres(List<String> choices) {
         List<Genre> results = new ArrayList<>();
 
@@ -257,6 +270,9 @@ public class InitializeController {
         return results;
     }
 
+    /**
+     * RETURN GENRE'S ID
+     */
     private String getGenreId(String genre) {
         for (Genre each: this.genres) {
             if (each.getName().equals(genre)) {

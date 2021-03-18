@@ -15,10 +15,10 @@ import org.openjfx.model.Movie;
 import java.io.IOException;
 import java.util.List;
 
-/*
-A SPECIFIED MOVIE PROFILE PAGE
-DETAILS SHOWN: MOVIE TITLE, DIRECTORS, GENRES, AVERAGE RATING, BRIEF SUMMARY, RATING BOX, 'ADD TO WISH LIST' BUTTON
-
+/**
+ * A SPECIFIED MOVIE PROFILE PAGE
+ * DETAILS SHOWN: MOVIE TITLE, DIRECTORS, GENRES, AVERAGE RATING, BRIEF SUMMARY, RATING BOX, 'ADD TO WISH LIST' BUTTON
+ * @author Ngo Quoc Thai
  */
 public class MovieProfileController {
     private Movie movie;
@@ -56,17 +56,23 @@ public class MovieProfileController {
     @FXML
     private Label notificationLabel;
 
+    /**
+     * FETCHING DATA FOR A PARTICULAR MOVIE AND DISPLAYING ON THE PAGE
+     */
     @FXML
     public void initialize() {
         this.notificationLabel.setText("");
 
+        // checking if user is at the search page.
         if (App.searchMovies != null) {
             this.movie = App.searchMovies.get(App.indexOfChosenSearchMovie);
         } else {
             this.movie = App.recommendedMovies.get(App.indexOfChosenMovie);
         }
 
+        // fetching list of genres and ids
         List<Genre> genres = new APIRequest().getGenreAndId();
+
         this.nameLabel.setText(this.movie.getTitle());
         String genre = "";
         if (this.movie.getGenres() != null) {
@@ -101,6 +107,9 @@ public class MovieProfileController {
         App.setRoot("dashboard");
     }
 
+    /**
+     * A FUNCTION TO RATE THE MOVIE AND ADD THE RATING TO THE DATABASE
+     */
     @FXML
     void submitRateOnAction(ActionEvent event) {
         String choice = this.rateComboBox.getSelectionModel().getSelectedItem();
@@ -117,6 +126,9 @@ public class MovieProfileController {
         }
     }
 
+    /**
+     * A FUNCTION TO ADD A MOVIE TO WISH LIST
+     */
     @FXML
     void addToWishListButtonOnAction(ActionEvent event) {
         DatabaseController dbController = new DatabaseController();

@@ -13,8 +13,9 @@ import org.openjfx.management.APIRequest;
 
 import java.io.IOException;
 
-/*
-THIS CLASS IS FOR SEARCHING MOVIES BY THEIR TITLE, GENRES, ACTORS/ACTRESSES,...
+/**
+ * THIS CLASS IS FOR SEARCHING MOVIES BY THEIR TITLE, GENRES, ACTORS/ACTRESSES,...
+ * @author Ngo Quoc Thai
  */
 public class SearchController {
 
@@ -63,12 +64,18 @@ public class SearchController {
     @FXML
     private Label movie6Name;
 
+    /**
+     * DIRECT USER TO DASHBOARD PAGE
+     */
     @FXML
     void backToDashboardButtonOnAction(ActionEvent event) throws IOException {
         App.searchMovies = null;
         App.setRoot("dashboard");
     }
 
+    /**
+     * A FUNCTION TO SEARCH FOR MOVIES
+     */
     @FXML
     void searchButtonOnAction(ActionEvent event) {
         String searchText = this.searchTextField.getText();
@@ -117,6 +124,9 @@ public class SearchController {
         App.setRoot("movie-profile");
     }
 
+    /**
+     * DISPLAY MOVIES ON THE PAGE
+     */
     private void setBriefMovieOnSearchPage() {
         this.movie1Name.setText(App.searchMovies.get(0).getTitle());
         Image image1 = new Image(App.searchMovies.get(0).getPoster_path());

@@ -1,7 +1,8 @@
 package org.openjfx.model;
 
-/*
-PRODUCTION COMPANY DETAIL
+/**
+ * PRODUCTION COMPANY DETAIL
+ * @author Dang Ngan Ha
  */
 public class ProductionCompany {
     private String id;

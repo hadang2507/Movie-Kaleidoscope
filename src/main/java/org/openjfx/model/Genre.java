@@ -1,7 +1,8 @@
 package org.openjfx.model;
 
-/*
-GENRE DETAIL
+/**
+ * GENRE DETAIL
+ * @author Dang Ngan Ha
  */
 public class Genre {
     private String id;

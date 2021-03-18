@@ -10,9 +10,10 @@ import org.openjfx.model.User;
 
 import java.io.IOException;
 
-/*
-THIS CLASS DISPLAY THE USER'S PROFILE PAGE
-THIS ALLOWS USER TO CHANGE THEIR PERSONAL INFROMATION SUCH AS PASSWORD
+/**
+ * THIS CLASS DISPLAY THE USER'S PROFILE PAGE
+ * THIS ALLOWS USER TO CHANGE THEIR PERSONAL INFROMATION SUCH AS PASSWORD
+ * @author Nguyen Phan Yen Ngan
  */
 public class ProfileController {
     private User user;
@@ -35,6 +36,9 @@ public class ProfileController {
     @FXML
     private Button backToDashboardButton;
 
+    /**
+     * FETCHING USER'S DATA FROM DATABASE AND DISPLAY TO THE PAGE
+     */
     @FXML
     public void initialize() {
         DatabaseController dbController = new DatabaseController();
@@ -51,6 +55,9 @@ public class ProfileController {
         App.setRoot("dashboard");
     }
 
+    /**
+     * A FUNCTION TO SAVE ANY MADE CHANGES
+     */
     @FXML
     void saveChangesOnAction(ActionEvent event) {
         user.setPassword(this.passwordPasswordField.getText());
@@ -62,6 +69,9 @@ public class ProfileController {
         this.fillTextFields();
     }
 
+    /**
+     * A FUNCTION FILL USER'S DATA TO TEXT FIELDS
+     */
     private void fillTextFields() {
         this.usernameTextField.setText(user.getUsername());
         this.passwordPasswordField.setText(user.getPassword());

@@ -16,12 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/*
-THIS CLASS IS FOR RETRIEVING RAW JSON STRING FROM THE API URL
+/**
+ * THIS CLASS IS FOR RETRIEVING RAW JSON STRING FROM THE API URL
+ * @author Dang Ngan Ha, Ngo Quoc Thai
  */
 public class APIRequest {
-
-    // get Json String from URL
+    /**
+     * GET JSON STRING FROM URL
+     */
     private String getJsonFromURL(String urlStringFormat) throws IOException, JsonParseException {
         URL url = new URL(urlStringFormat);
 
@@ -51,8 +53,8 @@ public class APIRequest {
         return respondCode >= 200;
     }
 
-    /*
-    GET THE GENRE LIST OF A MOVIE
+    /**
+     * GET THE GENRE LIST OF A MOVIE
      */
     public List<Genre> getGenreAndId() {
         String url = "https://api.themoviedb.org/3/genre/movie/list?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US";
@@ -85,9 +87,9 @@ public class APIRequest {
         return movies;
     }
 
-    /*
-    GET 20 MOVIES THAT BELONG TO A GENRE
-    (IF RETRIEVING TOO MUCH MOVIES, EXTREMELY LOW PERFOMANCE WILL OCCUR)
+    /**
+     * GET 20 MOVIES THAT BELONG TO A GENRE
+     * (IF RETRIEVING TOO MUCH MOVIES, EXTREMELY LOW PERFOMANCE WILL OCCUR)
      */
     public List<Movie> getMoviesFromGenres() {
         DatabaseController dbController = new DatabaseController();
@@ -113,8 +115,8 @@ public class APIRequest {
         return null;
     }
 
-    /*
-    GET 20 MOVIES THAT ARE TOP RATED FROM AROUND THE WORLD
+    /**
+     * GET 20 MOVIES THAT ARE TOP RATED FROM AROUND THE WORLD
      */
     public List<Movie> getTopRatedMovies(){
         String url = "https://api.themoviedb.org/3/movie/top_rated?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US&page=1";
@@ -140,8 +142,8 @@ public class APIRequest {
         return null;
     }
 
-    /*
-    GET MAXIMUM 20 MOVIES FROM A SEARCH STRING
+    /**
+     * GET MAXIMUM 20 MOVIES FROM A SEARCH STRING
      */
     public List<Movie> getSearchedMovies(String searchText) {
         searchText = searchText.replace(" ", "%20");
@@ -169,8 +171,8 @@ public class APIRequest {
         return null;
     }
 
-    /*
-    GET MAXIMUM 20 RECOMMENDED MOVIES FROM A MOVIE ID
+    /**
+     * GET MAXIMUM 20 RECOMMENDED MOVIES FROM A MOVIE ID
      */
     public List<Movie> getRecommendedMoviesByMovieId(String movieId){
 
@@ -196,8 +198,8 @@ public class APIRequest {
         }
         return null;
     }
-    /*
-    RETRIEVING THE DETAILS OF A MOVIE FROM A MOVIE ID
+    /**
+     * RETRIEVING THE DETAILS OF A MOVIE FROM A MOVIE ID
      */
     public Movie getMovieByMovieId (String movieId){
         String url = "https://api.themoviedb.org/3/movie/"+ movieId +"?api_key=405b7ef5e944fb61f960538017e4d88b&language=en-US";

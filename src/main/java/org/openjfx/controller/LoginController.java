@@ -11,9 +11,10 @@ import org.openjfx.model.User;
 
 import java.io.IOException;
 
-/*
-THIS CLASS IS FOR LOG IN PROCEDURE
-REQUIRED TEXT FIELDS INCLUDING: USERNAME, PASSWORD
+/**
+ * THIS CLASS IS FOR LOG IN PROCEDURE
+ * REQUIRED TEXT FIELDS INCLUDING: USERNAME, PASSWORD
+ * @author Nguyen Phan Yen Ngan
  */
 public class LoginController {
 
@@ -41,6 +42,10 @@ public class LoginController {
 
     }
 
+    /**
+     * A FUNCTION TO LOG THE USER IN THE SYSTEM
+     * CHECKING USERNAME, PASSWORD FORMAT
+     */
     @FXML
     void loginButtonOnAction(ActionEvent event) throws IOException{
         // 1. get input data
@@ -72,12 +77,17 @@ public class LoginController {
         }
     }
 
+    /**
+     * DIRECT USER TO REGISTER PAGE
+     */
     @FXML
     void registerButtonOnAction(ActionEvent event) throws IOException {
         App.setRoot("register");
     }
 
-
+    /**
+     * EMPTY ALL FILLED TEXT FIELDS
+     */
     public void emptyTextField() {
         this.usernameTextField.setText("");
         this.passwordField.setText("");

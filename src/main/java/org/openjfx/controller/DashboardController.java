@@ -116,8 +116,8 @@ public class DashboardController{
     private Button previousButton;
 
     /**
-     FUNCTION TO INITIALIZE USER'S DATA
-     GET PERSONALIZED MOVIES FROM USER'S DATA: WISH LIST, RATED MOVIES
+     * FUNCTION TO INITIALIZE USER'S DATA
+     * GET PERSONALIZED MOVIES FROM USER'S DATA: WISH LIST, RATED MOVIES
      */
     @FXML
     public void initialize() throws IOException {
@@ -280,10 +280,10 @@ public class DashboardController{
             this.setMovieBriefDetailsOnDashBoard();
         }
     }
-    /*
-    DISPLAY MOVIES IN SMALL SIZE ON THE DASHBOARD
-    EACH PAGE CONTAINS 4 MOVIES
-    ONLY BRIEF MOVIE DETAILS: TITLE, GENRES, THE AVERAGE RATING FROM THE AUDIENCE
+    /**
+     * DISPLAY MOVIES IN SMALL SIZE ON THE DASHBOARD
+     * EACH PAGE CONTAINS 4 MOVIES
+     * ONLY BRIEF MOVIE DETAILS: TITLE, GENRES, THE AVERAGE RATING FROM THE AUDIENCE
      */
     private void setMovieBriefDetailsOnDashBoard() {
         List<Genre> genres = new APIRequest().getGenreAndId();
@@ -373,8 +373,8 @@ public class DashboardController{
 
         }
     }
-    /*
-    FUNCTION TO SET THE EMPTY POSITIONS ON THE DASHBOARD IN WHICH NO MOVIE IS DISPLAYED
+    /**
+     * FUNCTION TO SET THE EMPTY POSITIONS ON THE DASHBOARD IN WHICH NO MOVIE IS DISPLAYED
      */
     private void setEmptyMovieBriefDetailsOnDashBoard() {
         this.movieLabel1.setText("");
@@ -404,8 +404,8 @@ public class DashboardController{
         this.moreButton4.setVisible(false);
     }
 
-    /*
-    RETURN THE MOVIE GENRES NAME FROM THE ID RETRIEVED FROM THE MOVIE DB
+    /**
+     * RETURN THE MOVIE GENRES NAME FROM THE ID RETRIEVED FROM THE MOVIE DB
      */
     private String getGenreNameFromId(List<Genre> list, Integer genreId) {
         for (Genre each: list) {

@@ -1,7 +1,8 @@
 package org.openjfx.model;
 
-/*
-USER DETAIL
+/**
+ * USER DETAIL
+ * @author Dang Ngan Ha
  */
 public class User {
 

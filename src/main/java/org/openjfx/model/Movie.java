@@ -2,8 +2,9 @@ package org.openjfx.model;
 
 import java.util.List;
 
-/*
-MOVIE DETAIL
+/**
+ * MOVIE DETAIL
+ * @author Dang Ngan Ha
  */
 public class Movie {
     private String id;
