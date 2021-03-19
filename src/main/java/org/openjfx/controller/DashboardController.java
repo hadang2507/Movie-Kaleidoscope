@@ -291,11 +291,17 @@ public class DashboardController{
         String genres1 = "";
         int i1 = 0;
         if (App.recommendedMovies.get(count).getGenres() != null) {
+            int countGenre1 = 1;
             for (Integer each: App.recommendedMovies.get(count).getGenres()) {
-                if (i1++ == App.recommendedMovies.get(count).getGenres().size() - 1){
-                    genres1 += getGenreNameFromId(genres, each);
-                } else {
-                    genres1 += getGenreNameFromId(genres, each) + " / ";
+                if(countGenre1 <=3) {
+                    if (i1++ == App.recommendedMovies.get(count).getGenres().size() - 1) {
+                        genres1 += getGenreNameFromId(genres, each);
+                    } else {
+                        genres1 += getGenreNameFromId(genres, each) + " / ";
+                    }
+                    countGenre1 += 1;
+                }else{
+                    genres1 += "...";
                 }
             }
         }
@@ -312,11 +318,17 @@ public class DashboardController{
             String genres2 = "";
             int i2 = 0;
             if (App.recommendedMovies.get(count + 1).getGenres() != null) {
+                int countGenre2 = 1;
                 for (Integer each: App.recommendedMovies.get(count + 1).getGenres()) {
-                    if(i2++ == App.recommendedMovies.get(count + 1).getGenres().size() - 1){
-                        genres2 += getGenreNameFromId(genres, each);
+                    if(countGenre2 <= 3) {
+                        if (i2++ == App.recommendedMovies.get(count + 1).getGenres().size() - 1) {
+                            genres2 += getGenreNameFromId(genres, each);
+                        } else {
+                            genres2 += getGenreNameFromId(genres, each) + " / ";
+                        }
+                        countGenre2 += 1;
                     }else{
-                        genres2 += getGenreNameFromId(genres, each) + " / ";
+                        genres2 += "...";
                     }
                 }
             }
@@ -333,13 +345,18 @@ public class DashboardController{
             this.movieLabel3.setText(App.recommendedMovies.get(count + 2).getTitle());
             String genres3 = "";
             int i3 = 0;
-
             if (App.recommendedMovies.get(count + 2).getGenres() != null) {
+                int countGenre3 = 1;
                 for (Integer each: App.recommendedMovies.get(count + 2).getGenres()) {
-                    if(i3++ == App.recommendedMovies.get(count + 2).getGenres().size() - 1){
-                        genres3 += getGenreNameFromId(genres, each);
+                    if(countGenre3 <= 3) {
+                        if (i3++ == App.recommendedMovies.get(count + 2).getGenres().size() - 1) {
+                            genres3 += getGenreNameFromId(genres, each);
+                        } else {
+                            genres3 += getGenreNameFromId(genres, each) + " / ";
+                        }
+                        countGenre3 += 1;
                     }else{
-                        genres3 += getGenreNameFromId(genres, each) + " / ";
+                        genres3 += "...";
                     }
                 }
             }
@@ -356,11 +373,17 @@ public class DashboardController{
             String genres4 = "";
             int i4 = 0;
             if (App.recommendedMovies.get(count + 3).getGenres() != null) {
+                int countGenre4 = 1;
                 for (Integer each: App.recommendedMovies.get(count + 3).getGenres()) {
-                    if(i4++ == App.recommendedMovies.get(count + 3).getGenres().size() - 1){
-                        genres4 += getGenreNameFromId(genres, each);
+                    if(countGenre4 <= 3) {
+                        if (i4++ == App.recommendedMovies.get(count + 3).getGenres().size() - 1) {
+                            genres4 += getGenreNameFromId(genres, each);
+                        } else {
+                            genres4 += getGenreNameFromId(genres, each) + " / ";
+                        }
+                        countGenre4 += 1;
                     }else{
-                        genres4 += getGenreNameFromId(genres, each) + " / ";
+                        genres4 += "...";
                     }
                 }
             }
