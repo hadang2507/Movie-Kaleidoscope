@@ -75,9 +75,15 @@ public class MovieProfileController {
 
         this.nameLabel.setText(this.movie.getTitle());
         String genre = "";
+        int countGenre = 0;
         if (this.movie.getGenres() != null) {
             for (Integer each: this.movie.getGenres()) {
-                genre += getGenreNameFromId(genres, each) + " / ";
+                if(countGenre == (this.movie.getGenres().size()-1)){
+                    genre += getGenreNameFromId(genres, each);
+                }else {
+                    genre += getGenreNameFromId(genres, each) + " / ";
+                }
+                countGenre++;
             }
         }
         Image image = new Image(this.movie.getPoster_path());
