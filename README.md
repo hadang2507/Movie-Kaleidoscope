@@ -10,13 +10,10 @@
   - Simple and easy to use UI.
   - Provide a wide range of movies gotten from TMDB APIs.
 
-  
 
-  ![login](D:\OneDrive\Desktop\login.png)
+![login](D:\VGU\2nd-Year-CS\Java\moviekaleidoscope\target\classes\org\openjfx\login.png)
 
-
-
-![dashboard](D:\OneDrive\Desktop\dashboard.png)
+![dashboard](D:\VGU\2nd-Year-CS\Java\moviekaleidoscope\target\classes\org\openjfx\dashboard.png)
 
 ------
 
