@@ -11,10 +11,6 @@
   - Provide a wide range of movies gotten from TMDB APIs.
 
 
-![login](D:\VGU\2nd-Year-CS\Java\moviekaleidoscope\target\classes\org\openjfx\login.png)
-
-![dashboard](D:\VGU\2nd-Year-CS\Java\moviekaleidoscope\target\classes\org\openjfx\dashboard.png)
-
 ------
 
 ## A learning project
