@@ -24,6 +24,6 @@ Developing an application like this is excellent experience towards learning:
 
 ## Copyright 
 
-- All the data is supported by TMDB (The Movie Database) APIs. This project, or app, is not for commercial use, only for education purpose.
+- All the data is supported by TMDB (The Movie Database) APIs. This project, or app, is not for commercial use, only for educational purposes.
 - The project is supervised by Prof.Schwind at The Frankfurt University of Applied Science. 
 
